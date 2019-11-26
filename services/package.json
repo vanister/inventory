@@ -1,0 +1,17 @@
+{
+  "name": "services",
+  "version": "0.1.0",
+  "description": "The Inventory API services.",
+  "private": true,
+  "keywords": [],
+  "author": "vanister",
+  "license": "MIT",
+  "scripts": {
+    "sls": "serverless",
+    "start": "serverless offline"
+  },
+  "devDependencies": {
+    "serverless": "^1.44.1",
+    "serverless-offline": "^5.1.1"
+  }
+}

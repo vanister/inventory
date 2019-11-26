@@ -1,0 +1,10 @@
+# environments
+.env
+.env.*
+.environment
+
+# macOS
+.DS_Store
+
+# docker
+docker_volumes

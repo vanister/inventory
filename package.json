@@ -1,0 +1,12 @@
+{
+  "name": "inventory",
+  "version": "0.1.0",
+  "description": "The Inventory project.",
+  "private": true,
+  "keywords": [],
+  "author": "vanister",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
