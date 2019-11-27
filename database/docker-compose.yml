@@ -1,30 +1,68 @@
 version: '3'
 
-services: 
-  db: 
-    image: postgres:12
+services:
+  db:
+    build: .
+    image: vanister/postgres
+    container_name: inv_db
     ports:
       - 5432:5432
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres123'
     volumes:
       - pgdata:/var/lib/postgresql/data
-    environment: 
-      POSTGRES_PASSWORD: 'postgres123'
-  
+
   # go to localhost:8080 and log in with the creds
   # listed in the environment section
-  pgadmin: 
+  pgadmin:
     image: dpage/pgadmin4
-    depends_on: 
+    container_name: inv_pgadmin
+    depends_on:
       - db
     ports:
       - 8000:80
     volumes:
-      # map to local folder to get backups and restore db from
-      # file
+      # map to local folder to backups and restore db files
       - ./docker_volumes/pgadmin:/var/lib/pgadmin
-    environment: 
-      PGADMIN_DEFAULT_EMAIL: 'van@pgadmin.com'
+      # - pgadmin_data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'admin@pgadmin.com'
       PGADMIN_DEFAULT_PASSWORD: 'pgadmin123'
 
 volumes:
-  pgdata:
+  pgdata: {}
+  pgadmin_data: {}
+
+# version: '3'
+
+# services: 
+#   db: 
+#     image: postgres:12
+#     ports:
+#       - 5432:5432
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+#     environment: 
+#       POSTGRES_PASSWORD: 'postgres123'
+  
+#   # go to localhost:8080 and log in with the creds
+#   # listed in the environment section
+#   pgadmin: 
+#     image: dpage/pgadmin4
+#     depends_on: 
+#       - db
+#     ports:
+#       - 8000:80
+#     volumes:
+#       # map to local folder to get backups and restore db from
+#       # file
+#       - ./docker_volumes/pgadmin:/var/lib/pgadmin
+#     environment: 
+#       PGADMIN_DEFAULT_EMAIL: 'van@pgadmin.com'
+#       PGADMIN_DEFAULT_PASSWORD: 'pgadmin123'
+
+# volumes:
+#   pgdata:
+
+  
