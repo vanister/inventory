@@ -27,41 +27,41 @@ SET default_with_oids = false;
 -- Name: Building; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."Building" (
-    "Id" integer NOT NULL,
-    "LocationId" integer NOT NULL,
-    "BuildingTypeId" smallint NOT NULL,
-    "Name" character varying(255) NOT NULL,
-    "Coord" point,
-    "Address" character varying(500) NOT NULL,
-    "Description" character varying(500),
-    "Cost" numeric(9,2)
+CREATE TABLE public."building" (
+    "id" integer NOT NULL,
+    "location_id" integer NOT NULL,
+    "building_type_id" smallint NOT NULL,
+    "name" character varying(255) NOT NULL,
+    "coord" point,
+    "address" character varying(500) NOT NULL,
+    "description" character varying(500),
+    "cost" numeric(9,2)
 );
 
 
-ALTER TABLE public."Building" OWNER TO postgres;
+ALTER TABLE public."building" OWNER TO postgres;
 
 --
 -- TOC entry 200 (class 1259 OID 16474)
 -- Name: BuildingType; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."BuildingType" (
-    "Id" smallint NOT NULL,
-    "Name" character varying(255) NOT NULL,
-    "Description" character varying(500)
+CREATE TABLE public."building_type" (
+    "id" smallint NOT NULL,
+    "name" character varying(255) NOT NULL,
+    "description" character varying(500)
 );
 
 
-ALTER TABLE public."BuildingType" OWNER TO postgres;
+ALTER TABLE public."building_type" OWNER TO postgres;
 
 --
 -- TOC entry 204 (class 1259 OID 16615)
 -- Name: BuildingType_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."BuildingType" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."BuildingType_Id_seq"
+ALTER TABLE public."building_type" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."building_type_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -75,8 +75,8 @@ ALTER TABLE public."BuildingType" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDEN
 -- Name: Building_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."Building" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."Building_Id_seq"
+ALTER TABLE public."building" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."building_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -90,40 +90,40 @@ ALTER TABLE public."Building" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY
 -- Name: Component; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."Component" (
-    "Id" integer NOT NULL,
-    "BuildingId" integer NOT NULL,
-    "ComponentTypeId" smallint NOT NULL,
-    "Name" character varying(255) NOT NULL,
-    "Cost" numeric(9,2),
-    "Location" character varying(255),
-    "Description" character varying(500)
+CREATE TABLE public."component" (
+    "id" integer NOT NULL,
+    "building_id" integer NOT NULL,
+    "component_type_id" smallint NOT NULL,
+    "name" character varying(255) NOT NULL,
+    "cost" numeric(9,2),
+    "location" character varying(255),
+    "description" character varying(500)
 );
 
 
-ALTER TABLE public."Component" OWNER TO postgres;
+ALTER TABLE public."component" OWNER TO postgres;
 
 --
 -- TOC entry 201 (class 1259 OID 16491)
 -- Name: ComponentType; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."ComponentType" (
-    "Id" smallint NOT NULL,
-    "Name" character varying(255) NOT NULL,
-    "Description" character varying(500)
+CREATE TABLE public."component_type" (
+    "id" smallint NOT NULL,
+    "name" character varying(255) NOT NULL,
+    "description" character varying(500)
 );
 
 
-ALTER TABLE public."ComponentType" OWNER TO postgres;
+ALTER TABLE public."component_type" OWNER TO postgres;
 
 --
 -- TOC entry 206 (class 1259 OID 16619)
 -- Name: ComponentType_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."ComponentType" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."ComponentType_Id_seq"
+ALTER TABLE public."component_type" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."component_type_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -137,8 +137,8 @@ ALTER TABLE public."ComponentType" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDE
 -- Name: Component_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."Component" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."Component_Id_seq"
+ALTER TABLE public."component" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."component_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -152,38 +152,38 @@ ALTER TABLE public."Component" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTIT
 -- Name: Location; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."Location" (
-    "Id" integer NOT NULL,
-    "Name" character varying(255) NOT NULL,
-    "Coord" point,
-    "Description" character varying(500),
-    "LocationTypeId" smallint NOT NULL
+CREATE TABLE public."location" (
+    "id" integer NOT NULL,
+    "name" character varying(255) NOT NULL,
+    "coord" point,
+    "description" character varying(500),
+    "location_type_id" smallint NOT NULL
 );
 
 
-ALTER TABLE public."Location" OWNER TO postgres;
+ALTER TABLE public."location" OWNER TO postgres;
 
 --
 -- TOC entry 199 (class 1259 OID 16466)
 -- Name: LocationType; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."LocationType" (
-    "Id" smallint NOT NULL,
-    "Name" character varying(255) NOT NULL,
-    "Description" character varying(500)
+CREATE TABLE public."location_type" (
+    "id" smallint NOT NULL,
+    "name" character varying(255) NOT NULL,
+    "description" character varying(500)
 );
 
 
-ALTER TABLE public."LocationType" OWNER TO postgres;
+ALTER TABLE public."location_type" OWNER TO postgres;
 
 --
 -- TOC entry 208 (class 1259 OID 16623)
 -- Name: LocationType_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."LocationType" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."LocationType_Id_seq"
+ALTER TABLE public."location_type" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."location_type_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -197,8 +197,8 @@ ALTER TABLE public."LocationType" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDEN
 -- Name: Location_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."Location" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."Location_Id_seq"
+ALTER TABLE public."location" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."location_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -212,22 +212,22 @@ ALTER TABLE public."Location" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY
 -- Name: UserLocation; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."UserLocation" (
-    "Id" integer NOT NULL,
-    "LocationId" integer NOT NULL,
-    "UserId" uuid NOT NULL
+CREATE TABLE public."user_location" (
+    "id" integer NOT NULL,
+    "location_id" integer NOT NULL,
+    "user_id" uuid NOT NULL
 );
 
 
-ALTER TABLE public."UserLocation" OWNER TO postgres;
+ALTER TABLE public."user_location" OWNER TO postgres;
 
 --
 -- TOC entry 2942 (class 0 OID 0)
 -- Dependencies: 202
--- Name: COLUMN "UserLocation"."UserId"; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN "user_location"."user_id"; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public."UserLocation"."UserId" IS 'This is the Id from the user store.';
+COMMENT ON COLUMN public."user_location"."user_id" IS 'This is the Id from the user store.';
 
 
 --
@@ -235,8 +235,8 @@ COMMENT ON COLUMN public."UserLocation"."UserId" IS 'This is the Id from the use
 -- Name: UserLocation_Id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."UserLocation" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDENTITY (
-    SEQUENCE NAME public."UserLocation_Id_seq"
+ALTER TABLE public."user_location" ALTER COLUMN "id" ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public."user_location_id_seq"
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -251,7 +251,7 @@ ALTER TABLE public."UserLocation" ALTER COLUMN "Id" ADD GENERATED ALWAYS AS IDEN
 -- Data for Name: Building; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Building" ("Id", "LocationId", "BuildingTypeId", "Name", "Coord", "Address", "Description", "Cost") FROM stdin;
+COPY public."building" ("id", "location_id", "building_type_id", "name", "coord", "address", "description", "cost") FROM stdin;
 \.
 
 
@@ -261,7 +261,7 @@ COPY public."Building" ("Id", "LocationId", "BuildingTypeId", "Name", "Coord", "
 -- Data for Name: BuildingType; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."BuildingType" ("Id", "Name", "Description") FROM stdin;
+COPY public."building_type" ("id", "name", "description") FROM stdin;
 \.
 
 
@@ -271,7 +271,7 @@ COPY public."BuildingType" ("Id", "Name", "Description") FROM stdin;
 -- Data for Name: Component; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Component" ("Id", "BuildingId", "ComponentTypeId", "Name", "Cost", "Location", "Description") FROM stdin;
+COPY public."component" ("id", "building_id", "component_type_id", "name", "cost", "location", "description") FROM stdin;
 \.
 
 
@@ -281,7 +281,7 @@ COPY public."Component" ("Id", "BuildingId", "ComponentTypeId", "Name", "Cost", 
 -- Data for Name: ComponentType; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."ComponentType" ("Id", "Name", "Description") FROM stdin;
+COPY public."component_type" ("id", "name", "description") FROM stdin;
 \.
 
 
@@ -291,7 +291,7 @@ COPY public."ComponentType" ("Id", "Name", "Description") FROM stdin;
 -- Data for Name: Location; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Location" ("Id", "Name", "Coord", "Description", "LocationTypeId") FROM stdin;
+COPY public."location" ("id", "name", "coord", "description", "location_type_id") FROM stdin;
 \.
 
 
@@ -301,7 +301,7 @@ COPY public."Location" ("Id", "Name", "Coord", "Description", "LocationTypeId") 
 -- Data for Name: LocationType; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."LocationType" ("Id", "Name", "Description") FROM stdin;
+COPY public."location_type" ("id", "name", "description") FROM stdin;
 \.
 
 
@@ -311,7 +311,7 @@ COPY public."LocationType" ("Id", "Name", "Description") FROM stdin;
 -- Data for Name: UserLocation; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."UserLocation" ("Id", "LocationId", "UserId") FROM stdin;
+COPY public."user_location" ("id", "location_id", "user_id") FROM stdin;
 \.
 
 
@@ -321,7 +321,7 @@ COPY public."UserLocation" ("Id", "LocationId", "UserId") FROM stdin;
 -- Name: BuildingType_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."BuildingType_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."building_type_id_seq"', 1, false);
 
 
 --
@@ -330,7 +330,7 @@ SELECT pg_catalog.setval('public."BuildingType_Id_seq"', 1, false);
 -- Name: Building_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Building_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."building_id_seq"', 1, false);
 
 
 --
@@ -339,7 +339,7 @@ SELECT pg_catalog.setval('public."Building_Id_seq"', 1, false);
 -- Name: ComponentType_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."ComponentType_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."component_type_id_seq"', 1, false);
 
 
 --
@@ -348,7 +348,7 @@ SELECT pg_catalog.setval('public."ComponentType_Id_seq"', 1, false);
 -- Name: Component_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Component_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."component_id_seq"', 1, false);
 
 
 --
@@ -357,7 +357,7 @@ SELECT pg_catalog.setval('public."Component_Id_seq"', 1, false);
 -- Name: LocationType_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."LocationType_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."location_type_id_seq"', 1, false);
 
 
 --
@@ -366,7 +366,7 @@ SELECT pg_catalog.setval('public."LocationType_Id_seq"', 1, false);
 -- Name: Location_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Location_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."location_id_seq"', 1, false);
 
 
 --
@@ -375,43 +375,43 @@ SELECT pg_catalog.setval('public."Location_Id_seq"', 1, false);
 -- Name: UserLocation_Id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."UserLocation_Id_seq"', 1, false);
+SELECT pg_catalog.setval('public."user_location_id_seq"', 1, false);
 
 
 --
 -- TOC entry 2791 (class 2606 OID 16481)
--- Name: BuildingType BuildingType_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: BuildingType building_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."BuildingType"
-    ADD CONSTRAINT "BuildingType_pkey" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."building_type"
+    ADD CONSTRAINT "building_type_pkey" PRIMARY KEY ("id");
 
 
 --
 -- TOC entry 2785 (class 2606 OID 16404)
--- Name: Building Building_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Building building_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Building"
-    ADD CONSTRAINT "Building_pkey" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."building"
+    ADD CONSTRAINT "building_pkey" PRIMARY KEY ("id");
 
 
 --
 -- TOC entry 2793 (class 2606 OID 16498)
--- Name: ComponentType ComponentType_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: ComponentType component_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."ComponentType"
-    ADD CONSTRAINT "ComponentType_pkey" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."component_type"
+    ADD CONSTRAINT "component_type_pkey" PRIMARY KEY ("id");
 
 
 --
 -- TOC entry 2787 (class 2606 OID 16417)
--- Name: Component Component_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Component component_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Component"
-    ADD CONSTRAINT "Component_pkey" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."component"
+    ADD CONSTRAINT "component_pkey" PRIMARY KEY ("id");
 
 
 --
@@ -419,80 +419,80 @@ ALTER TABLE ONLY public."Component"
 -- Name: Location Id; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Location"
-    ADD CONSTRAINT "Id" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."location"
+    ADD CONSTRAINT "id" PRIMARY KEY ("id");
 
 
 --
 -- TOC entry 2789 (class 2606 OID 16483)
--- Name: LocationType LocationType_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: LocationType location_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."LocationType"
-    ADD CONSTRAINT "LocationType_pkey" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."location_type"
+    ADD CONSTRAINT "location_type_pkey" PRIMARY KEY ("id");
 
 
 --
 -- TOC entry 2795 (class 2606 OID 16503)
--- Name: UserLocation UserLocation_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: UserLocation user_location_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."UserLocation"
-    ADD CONSTRAINT "UserLocation_pkey" PRIMARY KEY ("Id");
+ALTER TABLE ONLY public."user_location"
+    ADD CONSTRAINT "user_location_pkey" PRIMARY KEY ("id");
 
 
 --
 -- TOC entry 2798 (class 2606 OID 16519)
--- Name: Building Building_BuildingTypeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Building building_building_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Building"
-    ADD CONSTRAINT "Building_BuildingTypeId_fkey" FOREIGN KEY ("BuildingTypeId") REFERENCES public."BuildingType"("Id");
+ALTER TABLE ONLY public."building"
+    ADD CONSTRAINT "building_building_type_id_fkey" FOREIGN KEY ("building_type_id") REFERENCES public."building_type"("id");
 
 
 --
 -- TOC entry 2797 (class 2606 OID 16514)
--- Name: Building Building_LocationId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Building building_location_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Building"
-    ADD CONSTRAINT "Building_LocationId_fkey" FOREIGN KEY ("LocationId") REFERENCES public."Location"("Id");
+ALTER TABLE ONLY public."building"
+    ADD CONSTRAINT "building_location_id_fkey" FOREIGN KEY ("location_id") REFERENCES public."location"("id");
 
 
 --
 -- TOC entry 2799 (class 2606 OID 16418)
--- Name: Component Component_BuildingId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Component component_building_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Component"
-    ADD CONSTRAINT "Component_BuildingId_fkey" FOREIGN KEY ("BuildingId") REFERENCES public."Building"("Id");
+ALTER TABLE ONLY public."component"
+    ADD CONSTRAINT "component_building_id_fkey" FOREIGN KEY ("building_id") REFERENCES public."building"("id");
 
 
 --
 -- TOC entry 2800 (class 2606 OID 16524)
--- Name: Component Component_ComponentTypeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Component component_component_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Component"
-    ADD CONSTRAINT "Component_ComponentTypeId_fkey" FOREIGN KEY ("ComponentTypeId") REFERENCES public."ComponentType"("Id");
+ALTER TABLE ONLY public."component"
+    ADD CONSTRAINT "component_component_type_id_fkey" FOREIGN KEY ("component_type_id") REFERENCES public."component_type"("id");
 
 
 --
 -- TOC entry 2796 (class 2606 OID 16509)
--- Name: Location Location_LocationTypeId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: Location location_location_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."Location"
-    ADD CONSTRAINT "Location_LocationTypeId_fkey" FOREIGN KEY ("LocationTypeId") REFERENCES public."LocationType"("Id");
+ALTER TABLE ONLY public."location"
+    ADD CONSTRAINT "location_location_type_id_fkey" FOREIGN KEY ("location_type_id") REFERENCES public."location_type"("id");
 
 
 --
 -- TOC entry 2801 (class 2606 OID 16504)
--- Name: UserLocation UserLocation_LocationId_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: UserLocation user_location_location_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."UserLocation"
-    ADD CONSTRAINT "UserLocation_LocationId_fkey" FOREIGN KEY ("LocationId") REFERENCES public."Location"("Id");
+ALTER TABLE ONLY public."user_location"
+    ADD CONSTRAINT "user_location_location_id_fkey" FOREIGN KEY ("location_id") REFERENCES public."location"("id");
 
 
 -- Completed on 2019-06-17 15:12:54 UTC
