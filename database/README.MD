@@ -26,4 +26,4 @@ At the time of this writing they should be:
   - user: `admin@pgadmin.com`
   - pass: `pgadmin123`
 
-Note that these are for local environment use only
+Note that these are for local environment use only.
