@@ -1,5 +1,5 @@
 {
-  "name": "services",
+  "name": "inventory-services",
   "version": "0.1.0",
   "description": "The Inventory API services.",
   "private": true,
