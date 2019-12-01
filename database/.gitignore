@@ -7,4 +7,7 @@
 .DS_Store
 
 # docker
-docker_volumes
+docker_volumes/
+
+# node 
+node_modules/
