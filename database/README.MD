@@ -10,8 +10,11 @@ Make sure [Docker](https://www.docker.com/products/developer-tools) is installed
   - Run `docker-compose up -d`
     - The `-d` runs it in detached mode so your terminal doesn't stay connected to the container.
   - Run `docker ps` to confirm that the following containers are listed as started:
-    - `inv_pgadmin`
+    - `inv_pgadmin` (container_name)
       - This is the database manager ui.
+      - Open up a shell into the container:
+        - `docker exec -it inv_pgadmin /bin/sh`
+        - if `/bin/sh` doesn't work, try `/bin/bash`
     - `inv_db`
       - This is the Postgres server.
 
