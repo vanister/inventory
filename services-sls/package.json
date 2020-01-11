@@ -1,7 +1,7 @@
 {
-  "name": "inventory-services",
+  "name": "inventory-services-lambdas",
   "version": "0.1.0",
-  "description": "The Inventory API services.",
+  "description": "The Inventory API services as Lambda functions.",
   "private": true,
   "keywords": [],
   "author": "vanister",
