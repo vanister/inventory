@@ -24,13 +24,12 @@ services:
       - 8000:80
     volumes:
       # map to local folder to backups and restore db files
-      - ./docker_volumes/pgadmin:/var/lib/pgadmin
-      # - pgadmin_data:/var/lib/pgadmin
+      # - ./docker_volumes/pgadmin:/var/lib/pgadmin
+      - pgadmin_data:/var/lib/pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: 'admin@pgadmin.com'
       PGADMIN_DEFAULT_PASSWORD: 'pgadmin123'
 
 volumes:
   pgdata: {}
-  # only need this if not binding to local folder
-  # pgadmin_data: {}
+  pgadmin_data: {}
