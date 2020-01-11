@@ -1,0 +1,24 @@
+{
+  "name": "inventory-services-express",
+  "version": "0.1.0",
+  "description": "The Inventory API services as an Express server.",
+  "private": true,
+  "keywords": [],
+  "author": "vanister",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./dist/server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/jest": "^24.0.25",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.7.4"
+  }
+}
