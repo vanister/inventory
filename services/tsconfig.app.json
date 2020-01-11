@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.json",
+  "files": ["./src/server.ts"],
   "compilerOptions": {
     "types": ["express"]
   }
