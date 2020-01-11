@@ -35,7 +35,8 @@ CREATE TABLE public."building" (
     "coord" point,
     "address" character varying(500) NOT NULL,
     "description" character varying(500),
-    "cost" numeric(9,2)
+    "cost" numeric(9,2),
+    "image_url" character varying(2048)
 );
 
 
@@ -97,7 +98,8 @@ CREATE TABLE public."component" (
     "name" character varying(255) NOT NULL,
     "cost" numeric(9,2),
     "location" character varying(255),
-    "description" character varying(500)
+    "description" character varying(500),
+    "image_url" character varying(2048)
 );
 
 
@@ -157,7 +159,8 @@ CREATE TABLE public."location" (
     "name" character varying(255) NOT NULL,
     "coord" point,
     "description" character varying(500),
-    "location_type_id" smallint NOT NULL
+    "location_type_id" smallint NOT NULL,
+    "image_url" character varying(2048)
 );
 
 
