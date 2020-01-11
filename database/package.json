@@ -1,8 +1,7 @@
 {
   "name": "inventory-database",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "The Inventory database package",
-  "main": "dist/index.js",
   "private": true,
   "author": "vanister",
   "license": "MIT",
