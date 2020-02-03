@@ -7,17 +7,20 @@
   "author": "vanister",
   "license": "MIT",
   "scripts": {
+    "build": "tsc -p ./tsconfig.app.json",
+    "build:watch": "npm run build -- --watch",
     "start": "node ./dist/server.js",
     "test": "jest"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "body-parser": "^1.19.0"
+    "pg": "^7.18.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.1",
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.6",
+    "@types/pg": "^7.14.1",
     "jest": "^24.9.0",
     "ts-jest": "^24.3.0",
     "typescript": "^3.7.4"
