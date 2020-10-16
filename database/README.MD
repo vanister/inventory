@@ -2,6 +2,8 @@
 
 ## Setup
 
+// TODO: update
+
 The quickest way to get the database up and running is to run it in a docker container.
 
 Make sure [Docker](https://www.docker.com/products/developer-tools) is installed on your machine and started then run the following command:
