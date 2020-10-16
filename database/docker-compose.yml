@@ -1,17 +1,18 @@
-version: '3'
+version: '3.8'
 
 services:
-  db:
+  pg:
     build: .
     image: vanister/postgres
     container_name: inv_db
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'postgres123'
+      POSTGRES_USER: '${INV_PG_USER:-postgres}'
+      POSTGRES_PASSWORD: '${INV_PG_PASS:-postgres123}'
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      # - ./docker_volumes/pg_data:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
 
   # go to localhost:8080 and log in with the creds
   # listed in the environment section
@@ -22,14 +23,13 @@ services:
       - db
     ports:
       - 8000:80
-    volumes:
-      # map to local folder to backups and restore db files
-      # - ./docker_volumes/pgadmin:/var/lib/pgadmin
-      - pgadmin_data:/var/lib/pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: 'admin@pgadmin.com'
-      PGADMIN_DEFAULT_PASSWORD: 'pgadmin123'
+      PGADMIN_DEFAULT_EMAIL: '${INV_PGADMIN_EMAIL:-admin@pgadmin.com}'
+      PGADMIN_DEFAULT_PASSWORD: '${INV_PGADMIN_PASS:-pgadmin123}'
+    volumes:
+      # - ./docker_volumes/pgadmin_data:/var/lib/pgadmin
+      - pgadmin_data:/var/lib/pgadmin
 
 volumes:
-  pgdata: {}
+  pg_data: {}
   pgadmin_data: {}
