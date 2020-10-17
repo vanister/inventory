@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "target": "ES2019",
+    "module": "CommonJS",
+    "types": ["node", "validator"],
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "@config/*": ["configs/*"],
+      "@migrations/*": ["migrations/*"],
+      "@models/*": ["models/*"]
+    }
+  }
+}
