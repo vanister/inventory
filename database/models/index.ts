@@ -35,3 +35,5 @@
 // db.Sequelize = Sequelize;
 
 // module.exports = db;
+
+export { TableNames } from './table-names';

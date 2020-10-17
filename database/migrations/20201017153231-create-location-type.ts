@@ -1,5 +1,5 @@
-import { TableNames } from '@models/table-names';
-import { QueryInterface, DataTypes, Sequelize } from 'sequelize';
+import { TableNames } from '../models';
+import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
 
 module.exports = {
   up: async (queryInterface: QueryInterface, Sequelize: Sequelize) => {
@@ -8,18 +8,18 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       description: {
-        type: DataTypes.STRING(1000),
-      },
+        type: DataTypes.STRING(1000)
+      }
     });
   },
   down: async (queryInterface: QueryInterface, Sequelize: Sequelize) => {
     await queryInterface.dropTable(TableNames.LocationTypes);
-  },
+  }
 };
