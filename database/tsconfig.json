@@ -9,7 +9,8 @@
     "paths": {
       "@config/*": ["configs/*"],
       "@migrations/*": ["migrations/*"],
-      "@models/*": ["models/*"]
+      "@models/*": ["models/*"],
+      "@seeders/*": ["seeders/*"]
     }
   }
 }
