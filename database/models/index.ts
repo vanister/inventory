@@ -16,4 +16,10 @@ const dbcontext = new Sequelize({
 
 const LocationType = initLocationType(dbcontext);
 
-export { dbcontext, LocationType, TableNames };
+export {
+  dbcontext,
+  // enums and types
+  TableNames,
+  // models
+  LocationType
+};
