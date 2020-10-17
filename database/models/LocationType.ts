@@ -1,9 +1,4 @@
-import {
-  Sequelize,
-  Model,
-  DataTypes,
-  Optional
-} from 'sequelize';
+import { Sequelize, Model, DataTypes, Optional } from 'sequelize';
 import { TableNames } from './table-names';
 
 export interface LocationTypeAtributes {
@@ -15,6 +10,8 @@ export interface LocationTypeAtributes {
 export interface LocationTypeCreationAttributes
   extends Optional<LocationTypeAtributes, 'id' | 'description'> {}
 
+export interface LocationTypeAssociations {}
+
 export class LocationType
   extends Model<LocationTypeAtributes, LocationTypeCreationAttributes>
   implements LocationTypeAtributes {
@@ -25,7 +22,7 @@ export class LocationType
 
 export function initLocationType(
   sequelize: Sequelize,
-  associations?: { [name: string]: Model }
+  associations?: LocationTypeAssociations
 ) {
   LocationType.init(
     {
