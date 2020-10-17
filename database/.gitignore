@@ -11,3 +11,6 @@ docker_volumes/
 
 # node 
 node_modules/
+
+# project specific
+playground.ts
