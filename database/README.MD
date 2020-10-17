@@ -3,6 +3,7 @@
 ## Setup
 
 // TODO: update
+// TODO: dotenv
 
 The quickest way to get the database up and running is to run it in a docker container.
 
