@@ -20,7 +20,7 @@ services:
     image: dpage/pgadmin4
     container_name: inv_pgadmin
     depends_on:
-      - db
+      - pg
     ports:
       - 8000:80
     environment:
