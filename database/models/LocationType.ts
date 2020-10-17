@@ -42,7 +42,8 @@ export function initLocationType(
     },
     {
       sequelize,
-      tableName: TableNames.LocationTypes
+      tableName: TableNames.LocationTypes,
+      timestamps: false
     }
   );
 

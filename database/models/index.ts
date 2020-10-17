@@ -1,39 +1,19 @@
-// 'use strict';
+import 'dotenv/config';
 
-// const fs = require('fs');
-// const path = require('path');
-// const Sequelize = require('sequelize');
-// const basename = path.basename(__filename);
-// const env = process.env.NODE_ENV || 'development';
-// const config = require(__dirname + '/../config/config.json')[env];
-// const db = {};
+import { Sequelize } from 'sequelize';
+import { initLocationType } from './LocationType';
+import { TableNames } from './table-names';
 
-// let sequelize;
-// if (config.use_env_variable) {
-//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-// } else {
-//   sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
+const { INV_DB, INV_DB_UN, INV_DB_PW, INV_DB_HOST } = process.env;
 
-// fs
-//   .readdirSync(__dirname)
-//   .filter(file => {
-//     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-//   })
-//   .forEach(file => {
-//     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-//     db[model.name] = model;
-//   });
+const dbcontext = new Sequelize({
+  dialect: 'postgres',
+  database: INV_DB,
+  username: INV_DB_UN,
+  password: INV_DB_PW,
+  host: INV_DB_HOST
+});
 
-// Object.keys(db).forEach(modelName => {
-//   if (db[modelName].associate) {
-//     db[modelName].associate(db);
-//   }
-// });
+const LocationType = initLocationType(dbcontext);
 
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
-
-// module.exports = db;
-
-export { TableNames } from './table-names';
+export { dbcontext, LocationType, TableNames };
