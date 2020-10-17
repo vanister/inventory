@@ -20,7 +20,7 @@ export class LocationType
   public description!: string | null;
 }
 
-export function initLocationType(
+export function initialize(
   sequelize: Sequelize,
   associations?: LocationTypeAssociations
 ) {
