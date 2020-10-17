@@ -2,7 +2,7 @@
 
 -- DROP DATABASE inventory;
 
-CREATE DATABASE inventory
+CREATE DATABASE social_inventory_dev
     WITH 
     ENCODING = 'UTF8'
     LC_COLLATE = 'en_US.utf8'
