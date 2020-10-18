@@ -14,7 +14,7 @@
     "test": "jest",
     "sql": "npx sequelize",
     "sql:migrate": "npm run build && npm run sql -- db:migrate",
-    "sql:migration-gen": "npm run sql -- migration:generate",
+    "sql:migration-gen": "npm run sql -- migration:generate --migrations-path='./migrations' --underscored",
     "sql:seed": "npm run sql -- db:seed",
     "sql:seed-gen": "npm run sql -- seed:generate",
     "sql:model-gen": "npm run sql -- model:generate"
