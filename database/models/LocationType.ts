@@ -1,51 +1,32 @@
-import { Sequelize, Model, DataTypes, Optional } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import { TableNames } from './table-names';
+import {
+  attributesBase,
+  TypeBase,
+  TypeBaseAtributes,
+  TypeBaseCreationAttributes
+} from './TypeBase';
 
-export interface LocationTypeAtributes {
-  id: number;
-  name: string;
-  description?: string | null;
-}
+export interface LocationTypeAtributes extends TypeBaseAtributes {}
 
 export interface LocationTypeCreationAttributes
-  extends Optional<LocationTypeAtributes, 'id' | 'description'> {}
+  extends TypeBaseCreationAttributes {}
 
 export interface LocationTypeAssociations {}
 
 export class LocationType
-  extends Model<LocationTypeAtributes, LocationTypeCreationAttributes>
-  implements LocationTypeAtributes {
-  public id!: number;
-  public name!: string;
-  public description!: string | null;
-}
+  extends TypeBase<LocationTypeAtributes, LocationTypeCreationAttributes>
+  implements LocationTypeAtributes {}
 
 export function initialize(
   sequelize: Sequelize,
   associations?: LocationTypeAssociations
 ) {
-  LocationType.init(
-    {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
-      description: {
-        type: DataTypes.STRING(1000)
-      }
-    },
-    {
-      sequelize,
-      tableName: TableNames.LocationTypes,
-      timestamps: false
-    }
-  );
+  LocationType.init(attributesBase, {
+    sequelize,
+    tableName: TableNames.LocationTypes,
+    timestamps: false
+  });
 
   return LocationType;
 }
