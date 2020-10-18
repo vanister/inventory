@@ -1,6 +1,7 @@
 import 'dotenv/config';
 
 import { Sequelize } from 'sequelize';
+import { initialize as initBuildingType } from './BuildingType';
 import { initialize as initLocationType } from './LocationType';
 import { TableNames } from './table-names';
 
@@ -15,6 +16,7 @@ const dbcontext = new Sequelize({
 });
 
 // list models here
+const BuildingType = initBuildingType(dbcontext);
 const LocationType = initLocationType(dbcontext);
 
 export {
@@ -22,5 +24,6 @@ export {
   // enums and types
   TableNames,
   // models
+  BuildingType,
   LocationType
 };
