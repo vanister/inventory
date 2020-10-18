@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   pg:
-    build: .
+    build: ./database
     image: vanister/postgres
     container_name: inv_db
     ports:
