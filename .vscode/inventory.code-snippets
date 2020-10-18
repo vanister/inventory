@@ -1,5 +1,5 @@
 {
-  "snippetName": {
+  "Migration Skeleton": {
     "scope": "typescript,javascript",
     "prefix": "invMigrationSkeleton",
     "description": "Stub for a migration in TypeScript",
@@ -25,7 +25,7 @@
       "       columnOne: {",
       "         type: DataTypes.STRING,",
       "         allowNull: false",
-      "       }",
+      "       },",
       "       columnTwo: {",
       "         type: DataTypes.STRING(1000),",
       "       }",
