@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { Sequelize } from 'sequelize';
 import { initialize as initBuildingType } from './BuildingType';
 import { initialize as initLocationType } from './LocationType';
+import { initialize as initComponentType } from './ComponentType';
 import { TableNames } from './table-names';
 
 const { INV_DB, INV_DB_UN, INV_DB_PW, INV_DB_HOST } = process.env;
@@ -17,6 +18,7 @@ const dbcontext = new Sequelize({
 
 // list models here
 const BuildingType = initBuildingType(dbcontext);
+const ComponentType = initComponentType(dbcontext);
 const LocationType = initLocationType(dbcontext);
 
 export {
@@ -25,5 +27,6 @@ export {
   TableNames,
   // models
   BuildingType,
+  ComponentType,
   LocationType
 };
