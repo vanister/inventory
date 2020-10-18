@@ -1,5 +1,5 @@
 # build the postgres image with the db create script in it
-FROM postgres:13
+FROM postgres:12
 
 # explicit
 # override when creating starting the container
