@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import { TableNames } from './table-names';
 import {
-  attributesBase,
+  typeAttributesBase,
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
@@ -22,7 +22,7 @@ export function initialize(
   sequelize: Sequelize,
   associations?: BuildingTypeAssociations
 ) {
-  BuildingType.init(attributesBase, {
+  BuildingType.init(typeAttributesBase, {
     sequelize,
     tableName: TableNames.BuildingTypes,
     timestamps: false

@@ -17,7 +17,7 @@ export abstract class TypeBase<TBaseAttributes, TBaseCreationAttributes>
   public description!: string | null;
 }
 
-export const attributesBase: ModelAttributes<
+export const typeAttributesBase: ModelAttributes<
   TypeBase<TypeBaseAtributes, TypeBaseCreationAttributes>,
   TypeBaseAtributes
 > = {
