@@ -1,7 +1,7 @@
 {
-  "Migration Skeleton": {
+  "Sequelize Migration Skeleton": {
     "scope": "typescript,javascript",
-    "prefix": "invMigrationSkeleton",
+    "prefix": "migrationskeleton",
     "description": "Stub for a migration in TypeScript",
     "body": [
       "import { TableNames } from '../models';",
