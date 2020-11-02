@@ -12,6 +12,8 @@ export interface UserLocationsAssociations {}
 export class UserLocations
   extends Model<UserLocationsAtributes>
   implements UserLocationsAtributes {
+  static modelName = 'userLocations';
+
   id!: number;
   userId!: string;
   locationId!: number;

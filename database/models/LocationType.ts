@@ -16,7 +16,9 @@ export interface LocationTypeAssociations {}
 
 export class LocationType
   extends TypeBase<LocationTypeAtributes, LocationTypeCreationAttributes>
-  implements LocationTypeAtributes {}
+  implements LocationTypeAtributes {
+  static modelName = 'locationType';
+}
 
 export function initialize(
   sequelize: Sequelize,

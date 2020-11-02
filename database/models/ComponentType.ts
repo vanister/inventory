@@ -16,7 +16,9 @@ export interface ComponentTypeAssociations {}
 
 export class ComponentType
   extends TypeBase<ComponentTypeAtributes, ComponentTypeCreationAttributes>
-  implements ComponentTypeAtributes {}
+  implements ComponentTypeAtributes {
+  static modelName = 'componentType';
+}
 
 export function initialize(
   sequelize: Sequelize,
