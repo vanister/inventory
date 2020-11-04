@@ -11,8 +11,8 @@ services:
       POSTGRES_USER: '${INV_PG_USER:-postgres}'
       POSTGRES_PASSWORD: '${INV_PG_PASS:-postgres123}'
     volumes:
-      # - ./docker_volumes/pg_data:/var/lib/postgresql/data
-      - pg_data:/var/lib/postgresql/data
+      - ./docker_volumes/pg_data:/var/lib/postgresql/data
+      # - pg_data:/var/lib/postgresql/data
 
   # go to localhost:8080 and log in with the creds
   # listed in the environment section
@@ -31,6 +31,6 @@ services:
       # - pgadmin_data:/var/lib/pgadmin
 
 volumes:
-  pg_data: {}
   # comment out if mapping to local dir
+  # pg_data: {}
   # pgadmin_data: {}
