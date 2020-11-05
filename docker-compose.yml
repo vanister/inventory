@@ -29,8 +29,8 @@ services:
     volumes:
       - ./docker_volumes/pgadmin_data:/var/lib/pgadmin
       # - pgadmin_data:/var/lib/pgadmin
-
-volumes:
-  # comment out if mapping to local dir
-  # pg_data: {}
-  # pgadmin_data: {}
+      
+# volumes:
+# comment out if mapping to local dir
+# pg_data: {}
+# pgadmin_data: {}
