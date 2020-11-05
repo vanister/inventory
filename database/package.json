@@ -13,9 +13,9 @@
     "clean": "rimraf ./build",
     "test": "jest",
     "sql": "npx sequelize",
-    "sql:create-db": "np, run sql -- db:create",
+    "sql:create-db": "npm run sql -- db:create",
     "sql:migrate": "npm run build && npm run sql -- db:migrate",
-    "sql:migration-gen": "npm run sql -- migration:generate --migrations-path='./migrations' --underscored",
+    "sql:migration-gen": "npm run sql -- migration:generate --migrations-path='./migrations' --underscored --name",
     "sql:seed": "npm run sql -- db:seed",
     "sql:seed-gen": "npm run sql -- seed:generate",
     "sql:model-gen": "npm run sql -- model:generate"
