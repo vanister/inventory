@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize';
-import { TableNames } from './table-names';
 import {
   typeAttributesBase,
   TypeBase,
@@ -18,6 +17,7 @@ export class LocationType
   extends TypeBase<LocationTypeAtributes, LocationTypeCreationAttributes>
   implements LocationTypeAtributes {
   static modelName = 'locationType';
+  static tableName = 'location_type'
 }
 
 export function initialize(
@@ -26,7 +26,7 @@ export function initialize(
 ) {
   LocationType.init(typeAttributesBase, {
     sequelize,
-    tableName: TableNames.LocationTypes,
+    tableName: LocationType.tableName,
     timestamps: false
   });
 

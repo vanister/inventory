@@ -4,13 +4,6 @@
     "target": "ES2020",
     "module": "CommonJS",
     "types": ["node", "validator"],
-    "moduleResolution": "Node",
-    "baseUrl": ".",
-    "paths": {
-      "@config/*": ["configs/*"],
-      "@migrations/*": ["migrations/*"],
-      "@models/*": ["models/*"],
-      "@seeders/*": ["seeders/*"]
-    }
+    "moduleResolution": "Node"
   }
 }

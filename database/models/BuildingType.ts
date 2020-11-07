@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize';
-import { TableNames } from './table-names';
 import {
   typeAttributesBase,
   TypeBase,
@@ -18,6 +17,7 @@ export class BuildingType
   extends TypeBase<BuildingTypeAtributes, BuildingTypeCreationAttributes>
   implements BuildingTypeAtributes {
   static modelName = 'buildingType';
+  static tableName = 'building_type'
 }
 
 export function initialize(
@@ -26,7 +26,7 @@ export function initialize(
 ) {
   BuildingType.init(typeAttributesBase, {
     sequelize,
-    tableName: TableNames.BuildingTypes,
+    tableName: BuildingType.tableName,
     timestamps: false
   });
 

@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize';
-import { TableNames } from './table-names';
 import {
   typeAttributesBase,
   TypeBase,
@@ -18,6 +17,7 @@ export class ComponentType
   extends TypeBase<ComponentTypeAtributes, ComponentTypeCreationAttributes>
   implements ComponentTypeAtributes {
   static modelName = 'componentType';
+  static tableName = 'component_type'
 }
 
 export function initialize(
@@ -26,7 +26,7 @@ export function initialize(
 ) {
   ComponentType.init(typeAttributesBase, {
     sequelize,
-    tableName: TableNames.ComponentTypes,
+    tableName: ComponentType.tableName,
     timestamps: false
   });
 

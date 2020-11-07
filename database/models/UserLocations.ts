@@ -1,5 +1,4 @@
 import { DataTypes, Model, ModelAttributes, Sequelize } from 'sequelize';
-import { TableNames } from './table-names';
 
 export interface UserLocationsAtributes {
   id: number;
@@ -13,6 +12,7 @@ export class UserLocations
   extends Model<UserLocationsAtributes>
   implements UserLocationsAtributes {
   static modelName = 'userLocations';
+  static tableName = 'user_locations';
 
   id!: number;
   userId!: string;
@@ -44,7 +44,7 @@ export function initialize(
 ) {
   UserLocations.init(userLocationAttributes, {
     sequelize,
-    tableName: TableNames.LocationTypes,
+    tableName: UserLocations.tableName,
     timestamps: false
   });
 
