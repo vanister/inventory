@@ -8,6 +8,7 @@ import { initialize as initComponentType } from './ComponentType';
 import { initialize as initUserLocations } from './UserLocations';
 import { initialize as initUserProfile } from './UserProfile';
 import { initialize as initLocation } from './Location';
+import { initialize as initBuilding } from './Building';
 
 const { INV_DB, INV_DB_UN, INV_DB_PW, INV_DB_HOST, INV_DB_PORT } = process.env;
 
@@ -29,6 +30,7 @@ const LocationType = initLocationType(dbcontext);
 const UserLocations = initUserLocations(dbcontext);
 const UserProfile = initUserProfile(dbcontext);
 const Location = initLocation(dbcontext);
+const Building = initBuilding(dbcontext);
 
 export {
   dbcontext,
@@ -38,5 +40,6 @@ export {
   LocationType,
   UserLocations,
   UserProfile,
-  Location
+  Location,
+  Building
 };
