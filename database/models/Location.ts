@@ -54,7 +54,7 @@ export const attributes: ModelAttributes<Location> = {
   name: { type: DataTypes.STRING, allowNull: false },
   coord: { type: DataTypes.STRING },
   notes: { type: DataTypes.STRING },
-  imageUrl: { type: DataTypes.STRING },
+  imageUrl: { type: DataTypes.STRING, field: 'image_url' },
   description: { type: DataTypes.STRING(500) }
 };
 

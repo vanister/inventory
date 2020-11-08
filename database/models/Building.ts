@@ -61,7 +61,7 @@ export const attributes: ModelAttributes<Building> = {
   name: { type: DataTypes.STRING, allowNull: false },
   address: { type: DataTypes.STRING, allowNull: false },
   coord: { type: DataTypes.STRING },
-  imageUrl: { type: DataTypes.STRING },
+  imageUrl: { type: DataTypes.STRING, field: 'image_url' },
   description: { type: DataTypes.STRING(500) }
 };
 
