@@ -26,10 +26,10 @@ export const userLocationAttributes: ModelAttributes<UserLocations> = {
     autoIncrement: true,
     type: DataTypes.INTEGER
   },
-  user_profile_id: {
+  userProfileId: {
     allowNull: false,
     type: DataTypes.UUID,
-    field: 'user_id'
+    field: 'user_profile_id'
   },
   locationId: {
     allowNull: false,
