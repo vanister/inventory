@@ -5,12 +5,41 @@
   "private": true,
   "author": "vanister",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {},
   "directories": {
     "doc": "docs"
   },
+  "engines": {
+    "node": ">=14.15.0",
+    "npm": ">=6.14.0"
+  },
   "scripts": {
-    "test": "jest"
+    "build": "npx tsc",
+    "clean": "rimraf ./build",
+    "test": "jest",
+    "sql": "npx sequelize",
+    "sql:create-db": "npm run sql -- db:create",
+    "sql:drop-db": "npm run sql -- db:drop",
+    "sql:migrate": "npm run build && npm run sql -- db:migrate",
+    "sql:migration-gen": "npm run sql -- migration:generate --migrations-path='./migrations' --underscored --name",
+    "sql:restore": "npm run sql:drop-db && npm run sql:create-db && npm run clean && npm run sql:migrate",
+    "sql:seed": "npm run sql -- db:seed",
+    "sql:seed-gen": "npm run sql -- seed:generate",
+    "sql:model-gen": "npm run sql -- model:generate"
+  },
+  "dependencies": {
+    "@types/yargs": "^15.0.9",
+    "dotenv": "^8.2.0",
+    "pg": "^8.4.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^14.11.8",
+    "@types/validator": "^13.1.0",
+    "rimraf": "^3.0.2",
+    "sequelize-cli": "^6.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3",
+    "yargs": "^16.1.0"
   }
 }
