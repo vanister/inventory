@@ -2,7 +2,7 @@ import { DataTypes, Model, ModelAttributes, Sequelize } from 'sequelize';
 
 export interface UserLocationsAtributes {
   id: number;
-  userId: string;
+  userProfileId: number;
   locationId: number;
 }
 
@@ -11,15 +11,16 @@ export interface UserLocationsAssociations {}
 export class UserLocations
   extends Model<UserLocationsAtributes>
   implements UserLocationsAtributes {
+    
   static modelName = 'userLocations';
   static tableName = 'user_locations';
 
   id!: number;
-  userId!: string;
+  userProfileId!: number;
   locationId!: number;
 }
 
-export const userLocationAttributes: ModelAttributes<UserLocations> = {
+export const attributes: ModelAttributes<UserLocations> = {
   id: {
     allowNull: false,
     primaryKey: true,
@@ -28,7 +29,7 @@ export const userLocationAttributes: ModelAttributes<UserLocations> = {
   },
   userProfileId: {
     allowNull: false,
-    type: DataTypes.UUID,
+    type: DataTypes.INTEGER,
     field: 'user_profile_id'
   },
   locationId: {
@@ -42,7 +43,7 @@ export function initialize(
   sequelize: Sequelize,
   associations?: UserLocationsAssociations
 ) {
-  UserLocations.init(userLocationAttributes, {
+  UserLocations.init(attributes, {
     sequelize,
     tableName: UserLocations.tableName,
     timestamps: false
