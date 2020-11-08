@@ -73,7 +73,7 @@
       "  id!: number;",
       "}",
       "",
-      "const attributes: ModelAttributes<${1:Table}> = {",
+      "export const attributes: ModelAttributes<${1:Table}> = {",
       "  id: {",
       "    allowNull: false,",
       "    primaryKey: true,",
