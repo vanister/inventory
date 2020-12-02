@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize';
+import { Location } from './Location';
 import {
   typeAttributesBase,
   TypeBase,
@@ -20,9 +21,11 @@ export class LocationType
   static tableName = 'location_type'
 }
 
+// set up associations
+LocationType.hasMany(Location);
+
 export function initialize(
   sequelize: Sequelize,
-  associations?: LocationTypeAssociations
 ) {
   LocationType.init(typeAttributesBase, {
     sequelize,
