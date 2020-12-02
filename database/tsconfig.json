@@ -3,7 +3,7 @@
     "outDir": "./build",
     "target": "ES2020",
     "module": "CommonJS",
-    "types": ["node", "validator"],
-    "moduleResolution": "Node"
+    "typeRoots": ["node_modules/@types"],
+    "moduleResolution": "node",
   }
 }
