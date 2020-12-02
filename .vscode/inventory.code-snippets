@@ -44,7 +44,7 @@
   },
   "Table Model": {
     "scope": "typescript,javascript",
-    "prefix": "tablemodel",
+    "prefix": "seqtablemodel",
     "description": "Stub for a sequelize table model",
     "body": [
       "import {",
