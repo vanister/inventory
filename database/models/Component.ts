@@ -23,8 +23,6 @@ export interface ComponentCreationAttributes
     'id' | 'cost' | 'location' | 'imageUrl' | 'description'
   > {}
 
-export interface ComponentAssociations {}
-
 export class Component
   extends Model<ComponentAttributes, ComponentCreationAttributes>
   implements ComponentAttributes {
@@ -65,12 +63,10 @@ export const attributes: ModelAttributes<Component> = {
   description: { type: DataTypes.STRING(500) }
 };
 
-export function initialize(
-  sequelize: Sequelize,
-  associations?: ComponentAssociations
-) {
+export function initialize(sequelize: Sequelize) {
   Component.init(attributes, {
     sequelize,
+    modelName: Component.modelName,
     tableName: Component.tableName,
     timestamps: false
   });

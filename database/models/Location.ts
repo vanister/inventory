@@ -22,8 +22,6 @@ export interface LocationCreationAttributes
     'id' | 'coord' | 'notes' | 'imageUrl' | 'description'
   > {}
 
-export interface LocationAssociations {}
-
 export class Location
   extends Model<LocationAttributes, LocationCreationAttributes>
   implements LocationAttributes {

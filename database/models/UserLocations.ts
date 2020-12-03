@@ -6,12 +6,9 @@ export interface UserLocationsAtributes {
   locationId: number;
 }
 
-export interface UserLocationsAssociations {}
-
 export class UserLocations
   extends Model<UserLocationsAtributes>
   implements UserLocationsAtributes {
-    
   static modelName = 'userLocations';
   static tableName = 'user_locations';
 
@@ -39,12 +36,10 @@ export const attributes: ModelAttributes<UserLocations> = {
   }
 };
 
-export function initialize(
-  sequelize: Sequelize,
-  associations?: UserLocationsAssociations
-) {
+export function initialize(sequelize: Sequelize) {
   UserLocations.init(attributes, {
     sequelize,
+    modelName: UserLocations.modelName,
     tableName: UserLocations.tableName,
     timestamps: false
   });

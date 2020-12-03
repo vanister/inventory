@@ -11,8 +11,6 @@ export interface LocationTypeAtributes extends TypeBaseAtributes {}
 export interface LocationTypeCreationAttributes
   extends TypeBaseCreationAttributes {}
 
-export interface LocationTypeAssociations {}
-
 export class LocationType
   extends TypeBase<LocationTypeAtributes, LocationTypeCreationAttributes>
   implements LocationTypeAtributes {

@@ -21,12 +21,9 @@ export interface UserProfileCreationAttributes
     'id' | 'externalId' | 'phoneNumber'
   > {}
 
-export interface UserProfileAssociations {}
-
 export class UserProfile
   extends Model<UserProfileAttributes, UserProfileCreationAttributes>
   implements UserProfileAttributes {
-    
   static modelName = 'userProfile';
   static tableName = 'user_profile';
 
@@ -52,12 +49,10 @@ export const attributes: ModelAttributes<UserProfile> = {
   phoneNumber: { type: DataTypes.STRING, field: 'phone_number' }
 };
 
-export function initialize(
-  sequelize: Sequelize,
-  associations?: UserProfileAssociations
-) {
+export function initialize(sequelize: Sequelize) {
   UserProfile.init(attributes, {
     sequelize,
+    modelName: UserProfile.modelName,
     tableName: UserProfile.tableName,
     timestamps: false
   });

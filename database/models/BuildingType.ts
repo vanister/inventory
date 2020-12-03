@@ -11,8 +11,6 @@ export interface BuildingTypeAtributes extends TypeBaseAtributes {}
 export interface BuildingTypeCreationAttributes
   extends TypeBaseCreationAttributes {}
 
-export interface BuildingTypeAssociations {}
-
 export class BuildingType
   extends TypeBase<BuildingTypeAtributes, BuildingTypeCreationAttributes>
   implements BuildingTypeAtributes {
@@ -21,11 +19,11 @@ export class BuildingType
 }
 
 export function initialize(
-  sequelize: Sequelize,
-  associations?: BuildingTypeAssociations
+  sequelize: Sequelize
 ) {
   BuildingType.init(typeAttributesBase, {
     sequelize,
+    modelName: BuildingType.modelName,
     tableName: BuildingType.tableName,
     timestamps: false
   });

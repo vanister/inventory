@@ -23,8 +23,6 @@ export interface BuildingCreationAttributes
     'id' | 'coord' | 'imageUrl' | 'description'
   > {}
 
-export interface BuildingAssociations {}
-
 export class Building
   extends Model<BuildingAttributes, BuildingCreationAttributes>
   implements BuildingAttributes {
@@ -66,11 +64,11 @@ export const attributes: ModelAttributes<Building> = {
 };
 
 export function initialize(
-  sequelize: Sequelize,
-  associations?: BuildingAssociations
+  sequelize: Sequelize
 ) {
   Building.init(attributes, {
     sequelize,
+    modelName: Building.modelName,
     tableName: Building.tableName,
     timestamps: false
   });
