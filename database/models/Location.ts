@@ -5,7 +5,6 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
-import { LocationType } from './LocationType';
 
 export interface LocationAttributes {
   id: number;
@@ -40,9 +39,6 @@ export class Location
   description!: string;
 }
 
-// set up associations
-Location.belongsTo(LocationType, { foreignKey: 'location_type_id' });
-
 export const attributes: ModelAttributes<Location> = {
   id: {
     type: DataTypes.INTEGER,
@@ -65,6 +61,7 @@ export const attributes: ModelAttributes<Location> = {
 export function initialize(sequelize: Sequelize) {
   Location.init(attributes, {
     sequelize,
+    modelName: Location.modelName,
     tableName: Location.tableName,
     timestamps: false
   });
