@@ -22,7 +22,7 @@ const dbcontext = new Sequelize({
   port: +INV_DB_PORT
 });
 
-// list models here
+// intialize models
 const Building = initBuilding(dbcontext);
 const BuildingType = initBuildingType(dbcontext);
 const Component = initComponent(dbcontext);
@@ -31,6 +31,12 @@ const Location = initLocation(dbcontext);
 const LocationType = initLocationType(dbcontext);
 const UserLocations = initUserLocations(dbcontext);
 const UserProfile = initUserProfile(dbcontext);
+
+// set up associations
+LocationType.hasMany(Location, {
+  foreignKey: 'location_type_id'
+});
+Location.belongsTo(LocationType);
 
 export {
   dbcontext,
