@@ -1,10 +1,9 @@
 {
   "Sequelize Migration Skeleton": {
     "scope": "typescript,javascript",
-    "prefix": "migrationskeleton",
+    "prefix": "seqmigrationskeleton",
     "description": "Stub for a migration in TypeScript",
     "body": [
-      "import { TableNames } from '../models';",
       "import { DataTypes, QueryInterface, Sequelize } from 'sequelize';",
       "",
       "// NOTE: remember to change this file to a `.ts` file if it's `.js`!!!",
@@ -15,7 +14,7 @@
       "    ",
       "    // example:",
       "    /*",
-      "      await queryInterface.createTable(TableNames.${1:TableName}, {",
+      "      await queryInterface.createTable(model.${1:TableName}, {",
       "       id: {",
       "         allowNull: false,",
       "         autoIncrement: true,",
@@ -37,12 +36,12 @@
       "    // add reverting commands here.",
       "    ",
       "    // example:",
-      "    // await queryInterface.dropTable(TableNames.${1:TableName});",
+      "    // await queryInterface.dropTable(model.${1:TableName});",
       "  }",
       "};"
     ]
   },
-  "Table Model": {
+  "Sequelize Table Model": {
     "scope": "typescript,javascript",
     "prefix": "seqtablemodel",
     "description": "Stub for a sequelize table model",
