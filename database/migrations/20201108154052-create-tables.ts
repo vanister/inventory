@@ -19,10 +19,6 @@ import { attributes as locationAttributes, Location } from '../models/Location';
 import { attributes as buildingAttributes, Building } from '../models/Building';
 
 async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {
-  await queryInterface.createTable(UserLocations.tableName, {
-    ...userLocationAttributes
-  });
-
   await queryInterface.createTable(UserProfile.tableName, {
     ...userProfileAttributes
   });
@@ -37,6 +33,10 @@ async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {
 
   await queryInterface.createTable(Component.tableName, {
     ...componentAttributes
+  });
+
+  await queryInterface.createTable(UserLocations.tableName, {
+    ...userLocationAttributes
   });
 }
 

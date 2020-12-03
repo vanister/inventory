@@ -38,6 +38,12 @@ LocationType.hasMany(Location, {
 });
 Location.belongsTo(LocationType);
 
+BuildingType.hasMany(Building, { foreignKey: 'building_type_id' });
+Building.belongsTo(BuildingType);
+
+ComponentType.hasMany(Component, { foreignKey: 'component_type_id' });
+Component.belongsTo(ComponentType);
+
 export {
   dbcontext,
   // models
