@@ -1,5 +1,6 @@
-import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
+import { Model, ModelStatic, Sequelize } from 'sequelize';
 import {
+  typeAttributesBase,
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
@@ -16,8 +17,8 @@ export class BuildingType
   static modelName = 'buildingType';
   static tableName = 'building_type';
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
-    BuildingType.init(attributes, {
+  static initModel(sequelize: Sequelize) {
+    BuildingType.init(typeAttributesBase, {
       sequelize,
       modelName: BuildingType.modelName,
       tableName: BuildingType.tableName,
