@@ -32,8 +32,12 @@ export function initialize(sequelize: Sequelize) {
 
 export {
   // models
+  Building,
+  BuildingType,
   Component,
   ComponentType,
   Location,
-  LocationType
+  LocationType,
+  UserLocations,
+  UserProfile
 };
