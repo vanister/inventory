@@ -5,5 +5,7 @@
     "module": "CommonJS",
     "typeRoots": ["node_modules/@types"],
     "moduleResolution": "node",
-  }
+    "esModuleInterop": true
+  },
+  "exclude": ["playground.ts"]
 }
