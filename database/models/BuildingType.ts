@@ -26,7 +26,6 @@ export class BuildingType
     });
   }
 
-  /** Sets the association for this model.  All models must be `initialize`'d first. */
   static setAssociations({ Building }: { Building: ModelStatic<Model> }) {
     BuildingType.hasMany(Building);
   }
