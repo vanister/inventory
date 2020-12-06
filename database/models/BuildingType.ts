@@ -1,6 +1,5 @@
-import { Sequelize } from 'sequelize';
+import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
 import {
-  typeAttributesBase,
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
@@ -15,18 +14,19 @@ export class BuildingType
   extends TypeBase<BuildingTypeAtributes, BuildingTypeCreationAttributes>
   implements BuildingTypeAtributes {
   static modelName = 'buildingType';
-  static tableName = 'building_type'
-}
+  static tableName = 'building_type';
 
-export function initialize(
-  sequelize: Sequelize
-) {
-  BuildingType.init(typeAttributesBase, {
-    sequelize,
-    modelName: BuildingType.modelName,
-    tableName: BuildingType.tableName,
-    timestamps: false
-  });
+  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+    BuildingType.init(attributes, {
+      sequelize,
+      modelName: BuildingType.modelName,
+      tableName: BuildingType.tableName,
+      timestamps: false
+    });
+  }
 
-  return BuildingType;
+  /** Sets the association for this model.  All models must be `initialize`'d first. */
+  static setAssociations({ Building }: { Building: ModelStatic<Model> }) {
+    BuildingType.hasMany(Building);
+  }
 }

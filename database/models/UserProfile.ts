@@ -1,10 +1,13 @@
 import {
+  Association,
   DataTypes,
   Model,
   ModelAttributes,
+  ModelStatic,
   Optional,
   Sequelize
 } from 'sequelize';
+import { UserLocations } from './UserLocations';
 
 export interface UserProfileAttributes {
   id: number;
@@ -21,20 +24,6 @@ export interface UserProfileCreationAttributes
     'id' | 'externalId' | 'phoneNumber'
   > {}
 
-export class UserProfile
-  extends Model<UserProfileAttributes, UserProfileCreationAttributes>
-  implements UserProfileAttributes {
-  static modelName = 'userProfile';
-  static tableName = 'user_profile';
-
-  id!: number;
-  firstName!: string;
-  lastName!: string;
-  email!: string;
-  externalId!: string;
-  phoneNumber!: string;
-}
-
 export const attributes: ModelAttributes<UserProfile> = {
   id: {
     allowNull: false,
@@ -49,13 +38,32 @@ export const attributes: ModelAttributes<UserProfile> = {
   phoneNumber: { type: DataTypes.STRING, field: 'phone_number' }
 };
 
-export function initialize(sequelize: Sequelize) {
-  UserProfile.init(attributes, {
-    sequelize,
-    modelName: UserProfile.modelName,
-    tableName: UserProfile.tableName,
-    timestamps: false
-  });
+export class UserProfile
+  extends Model<UserProfileAttributes, UserProfileCreationAttributes>
+  implements UserProfileAttributes {
+  static modelName = 'userProfile';
+  static tableName = 'user_profile';
 
-  return UserProfile;
+  id!: number;
+  firstName!: string;
+  lastName!: string;
+  email!: string;
+  externalId!: string;
+  phoneNumber!: string;
+
+  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+    UserProfile.init(attributes, {
+      sequelize,
+      modelName: UserProfile.modelName,
+      tableName: UserProfile.tableName,
+      timestamps: false
+    });
+  }
+
+  static setAssociations({
+    Location,
+    UserLocations
+  }: {
+    [name: string]: ModelStatic<Model>;
+  }) {}
 }

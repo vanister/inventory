@@ -2,6 +2,7 @@ import {
   DataTypes,
   Model,
   ModelAttributes,
+  ModelStatic,
   Optional,
   Sequelize
 } from 'sequelize';
@@ -22,22 +23,6 @@ export interface ComponentCreationAttributes
     ComponentAttributes,
     'id' | 'cost' | 'location' | 'imageUrl' | 'description'
   > {}
-
-export class Component
-  extends Model<ComponentAttributes, ComponentCreationAttributes>
-  implements ComponentAttributes {
-  static modelName = 'component';
-  static tableName = 'component';
-
-  id!: number;
-  buildingId!: number;
-  componentTypeId!: number;
-  name!: string;
-  cost!: number;
-  location!: string;
-  imageUrl!: string;
-  description!: string;
-}
 
 export const attributes: ModelAttributes<Component> = {
   id: {
@@ -63,13 +48,36 @@ export const attributes: ModelAttributes<Component> = {
   description: { type: DataTypes.STRING(500) }
 };
 
-export function initialize(sequelize: Sequelize) {
-  Component.init(attributes, {
-    sequelize,
-    modelName: Component.modelName,
-    tableName: Component.tableName,
-    timestamps: false
-  });
+export class Component
+  extends Model<ComponentAttributes, ComponentCreationAttributes>
+  implements ComponentAttributes {
+  static modelName = 'component';
+  static tableName = 'component';
 
-  return Component;
+  id!: number;
+  buildingId!: number;
+  componentTypeId!: number;
+  name!: string;
+  cost!: number;
+  location!: string;
+  imageUrl!: string;
+  description!: string;
+
+  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+    Component.init(attributes, {
+      sequelize,
+      modelName: Component.modelName,
+      tableName: Component.tableName,
+      timestamps: false
+    });
+  }
+
+  /** Sets the association for this model.  All models must be `initialize`'d first. */
+  static setAssociations({
+    ComponentType
+  }: {
+    ComponentType: ModelStatic<Model>;
+  }) {
+    Component.belongsTo(ComponentType, { foreignKey: 'component_type_id' });
+  }
 }

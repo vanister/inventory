@@ -2,6 +2,7 @@ import {
   DataTypes,
   Model,
   ModelAttributes,
+  ModelStatic,
   Optional,
   Sequelize
 } from 'sequelize';
@@ -22,22 +23,6 @@ export interface BuildingCreationAttributes
     BuildingAttributes,
     'id' | 'coord' | 'imageUrl' | 'description'
   > {}
-
-export class Building
-  extends Model<BuildingAttributes, BuildingCreationAttributes>
-  implements BuildingAttributes {
-  static modelName = 'building';
-  static tableName = 'building';
-
-  id!: number;
-  locationId!: number;
-  buildingTypeId!: number;
-  name!: string;
-  address!: string;
-  coord!: any;
-  imageUrl!: string;
-  description!: string;
-}
 
 export const attributes: ModelAttributes<Building> = {
   id: {
@@ -63,15 +48,35 @@ export const attributes: ModelAttributes<Building> = {
   description: { type: DataTypes.STRING(500) }
 };
 
-export function initialize(
-  sequelize: Sequelize
-) {
-  Building.init(attributes, {
-    sequelize,
-    modelName: Building.modelName,
-    tableName: Building.tableName,
-    timestamps: false
-  });
+export class Building
+  extends Model<BuildingAttributes, BuildingCreationAttributes>
+  implements BuildingAttributes {
+  static modelName = 'building';
+  static tableName = 'building';
 
-  return Building;
+  id!: number;
+  locationId!: number;
+  buildingTypeId!: number;
+  name!: string;
+  address!: string;
+  coord!: any;
+  imageUrl!: string;
+  description!: string;
+
+  static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
+    Building.init(attributes, {
+      sequelize,
+      modelName: Building.modelName,
+      tableName: Building.tableName,
+      timestamps: false
+    });
+  }
+
+  static setAssociations({
+    BuildingType
+  }: {
+    BuildingType: ModelStatic<Model>;
+  }) {
+    Building.belongsTo(BuildingType, { foreignKey: 'building_type_id' });
+  }
 }

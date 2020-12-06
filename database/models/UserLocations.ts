@@ -6,17 +6,6 @@ export interface UserLocationsAtributes {
   locationId: number;
 }
 
-export class UserLocations
-  extends Model<UserLocationsAtributes>
-  implements UserLocationsAtributes {
-  static modelName = 'userLocations';
-  static tableName = 'user_locations';
-
-  id!: number;
-  userProfileId!: number;
-  locationId!: number;
-}
-
 export const attributes: ModelAttributes<UserLocations> = {
   id: {
     allowNull: false,
@@ -36,13 +25,22 @@ export const attributes: ModelAttributes<UserLocations> = {
   }
 };
 
-export function initialize(sequelize: Sequelize) {
-  UserLocations.init(attributes, {
-    sequelize,
-    modelName: UserLocations.modelName,
-    tableName: UserLocations.tableName,
-    timestamps: false
-  });
+export class UserLocations
+  extends Model<UserLocationsAtributes>
+  implements UserLocationsAtributes {
+  static modelName = 'userLocations';
+  static tableName = 'user_locations';
 
-  return UserLocations;
+  id!: number;
+  userProfileId!: number;
+  locationId!: number;
+
+  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+    UserLocations.init(attributes, {
+      sequelize,
+      modelName: UserLocations.modelName,
+      tableName: UserLocations.tableName,
+      timestamps: false
+    });
+  }
 }

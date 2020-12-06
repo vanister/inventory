@@ -1,6 +1,5 @@
-import { Sequelize } from 'sequelize';
+import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
 import {
-  typeAttributesBase,
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
@@ -16,15 +15,18 @@ export class ComponentType
   implements ComponentTypeAtributes {
   static modelName = 'componentType';
   static tableName = 'component_type';
-}
 
-export function initialize(sequelize: Sequelize) {
-  ComponentType.init(typeAttributesBase, {
-    sequelize,
-    modelName: ComponentType.modelName,
-    tableName: ComponentType.tableName,
-    timestamps: false
-  });
+  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+    ComponentType.init(attributes, {
+      sequelize,
+      modelName: ComponentType.modelName,
+      tableName: ComponentType.tableName,
+      timestamps: false
+    });
+  }
 
-  return ComponentType;
+  /** Sets the association for this model.  All models must be `initialize`'d first. */
+  static setAssociations({ Component }: { Component: ModelStatic<Model> }) {
+    ComponentType.hasMany(Component);
+  }
 }

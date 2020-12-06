@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
 import {
   typeAttributesBase,
   TypeBase,
@@ -16,17 +16,17 @@ export class LocationType
   implements LocationTypeAtributes {
   static modelName = 'locationType';
   static tableName = 'location_type';
-}
 
-export function initialize(
-  sequelize: Sequelize,
-) {
-  LocationType.init(typeAttributesBase, {
-    sequelize,
-    modelName: LocationType.modelName,
-    tableName: LocationType.tableName,
-    timestamps: false
-  });
+  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+    LocationType.init(attributes, {
+      sequelize,
+      modelName: LocationType.modelName,
+      tableName: LocationType.tableName,
+      timestamps: false
+    });
+  }
 
-  return LocationType;
+  static setAssociations({ Location }: { Location: ModelStatic<Model> }) {
+    LocationType.hasMany(Location);
+  }
 }
