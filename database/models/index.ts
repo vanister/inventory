@@ -2,10 +2,9 @@ import 'dotenv/config';
 
 import { Sequelize } from 'sequelize';
 
+import { typeAttributesBase } from './TypeBase';
 import { Building, attributes as buildingAttributes } from './Building';
 import { BuildingType } from './BuildingType';
-
-import { typeAttributesBase } from './TypeBase';
 
 import { Component, attributes as componentAttributes } from './Component';
 import { ComponentType } from './ComponentType';
@@ -15,11 +14,11 @@ import { LocationType } from './LocationType';
 export function initialize(sequelize: Sequelize) {
   // initalize the model
   Building.initModel(sequelize, buildingAttributes);
-  BuildingType.initModel(sequelize);
+  BuildingType.initModel(sequelize, typeAttributesBase);
   Component.initialize(sequelize, componentAttributes);
-  ComponentType.initialize(sequelize, typeAttributesBase);
+  ComponentType.initModel(sequelize, typeAttributesBase);
   Location.initialize(sequelize, locationAttributes);
-  LocationType.initialize(sequelize, typeAttributesBase);
+  LocationType.initModel(sequelize, typeAttributesBase);
 
   // set associations
   Building.setAssociations({ BuildingType });

@@ -1,6 +1,5 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
 import {
-  typeAttributesBase,
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
@@ -17,7 +16,7 @@ export class LocationType
   static modelName = 'locationType';
   static tableName = 'location_type';
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+  static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     LocationType.init(attributes, {
       sequelize,
       modelName: LocationType.modelName,

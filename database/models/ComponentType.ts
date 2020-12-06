@@ -16,7 +16,7 @@ export class ComponentType
   static modelName = 'componentType';
   static tableName = 'component_type';
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+  static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     ComponentType.init(attributes, {
       sequelize,
       modelName: ComponentType.modelName,
@@ -25,7 +25,6 @@ export class ComponentType
     });
   }
 
-  /** Sets the association for this model.  All models must be `initialize`'d first. */
   static setAssociations({ Component }: { Component: ModelStatic<Model> }) {
     ComponentType.hasMany(Component);
   }
