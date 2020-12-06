@@ -6,8 +6,9 @@
 # macOS
 .DS_Store
 
-# docker
+# data
 docker_volumes/
+localdata/
 
 # node 
 node_modules/
