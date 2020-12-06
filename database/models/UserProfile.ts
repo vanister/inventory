@@ -24,20 +24,6 @@ export interface UserProfileCreationAttributes
     'id' | 'externalId' | 'phoneNumber'
   > {}
 
-export const attributes: ModelAttributes<UserProfile> = {
-  id: {
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-    type: DataTypes.INTEGER
-  },
-  firstName: { type: DataTypes.STRING, field: 'first_name', allowNull: false },
-  lastName: { type: DataTypes.STRING, field: 'last_name', allowNull: false },
-  email: { type: DataTypes.STRING, allowNull: false },
-  externalId: { type: DataTypes.UUID, field: 'external_id' },
-  phoneNumber: { type: DataTypes.STRING, field: 'phone_number' }
-};
-
 export class UserProfile
   extends Model<UserProfileAttributes, UserProfileCreationAttributes>
   implements UserProfileAttributes {
@@ -51,7 +37,33 @@ export class UserProfile
   externalId!: string;
   phoneNumber!: string;
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+  static initModel(sequelize: Sequelize) {
+    const attributes: ModelAttributes<UserProfile> = {
+      id: {
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+        type: DataTypes.INTEGER
+      },
+      firstName: {
+        type: DataTypes.STRING,
+        field: 'first_name',
+        allowNull: false
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        field: 'last_name',
+        allowNull: false
+      },
+      email: { type: DataTypes.STRING, allowNull: false },
+      externalId: {
+        type: DataTypes.UUID,
+        field: 'external_id',
+        comment: 'external sso key'
+      },
+      phoneNumber: { type: DataTypes.STRING, field: 'phone_number' }
+    };
+
     UserProfile.init(attributes, {
       sequelize,
       modelName: UserProfile.modelName,

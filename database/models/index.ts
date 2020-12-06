@@ -1,24 +1,25 @@
-import 'dotenv/config';
-
 import { Sequelize } from 'sequelize';
 
 import { typeAttributesBase } from './TypeBase';
-import { Building, attributes as buildingAttributes } from './Building';
+import { Building } from './Building';
 import { BuildingType } from './BuildingType';
-
-import { Component, attributes as componentAttributes } from './Component';
+import { Component } from './Component';
 import { ComponentType } from './ComponentType';
-import { Location, attributes as locationAttributes } from './Location';
+import { Location } from './Location';
 import { LocationType } from './LocationType';
+import { UserLocations } from './UserLocations';
+import { UserProfile } from './UserProfile';
 
 export function initialize(sequelize: Sequelize) {
-  // initalize the model
-  Building.initModel(sequelize, buildingAttributes);
+  // initalize the models
+  Building.initModel(sequelize);
   BuildingType.initModel(sequelize, typeAttributesBase);
-  Component.initialize(sequelize, componentAttributes);
+  Component.initModel(sequelize);
   ComponentType.initModel(sequelize, typeAttributesBase);
-  Location.initialize(sequelize, locationAttributes);
+  Location.initModel(sequelize);
   LocationType.initModel(sequelize, typeAttributesBase);
+  UserLocations.initModel(sequelize);
+  UserProfile.initModel(sequelize);
 
   // set associations
   Building.setAssociations({ BuildingType });

@@ -6,25 +6,6 @@ export interface UserLocationsAtributes {
   locationId: number;
 }
 
-export const attributes: ModelAttributes<UserLocations> = {
-  id: {
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-    type: DataTypes.INTEGER
-  },
-  userProfileId: {
-    allowNull: false,
-    type: DataTypes.INTEGER,
-    field: 'user_profile_id'
-  },
-  locationId: {
-    allowNull: false,
-    type: DataTypes.INTEGER,
-    field: 'location_id'
-  }
-};
-
 export class UserLocations
   extends Model<UserLocationsAtributes>
   implements UserLocationsAtributes {
@@ -35,7 +16,26 @@ export class UserLocations
   userProfileId!: number;
   locationId!: number;
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+  static initModel(sequelize: Sequelize) {
+    const attributes: ModelAttributes<UserLocations> = {
+      id: {
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+        type: DataTypes.INTEGER
+      },
+      userProfileId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        field: 'user_profile_id'
+      },
+      locationId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        field: 'location_id'
+      }
+    };
+
     UserLocations.init(attributes, {
       sequelize,
       modelName: UserLocations.modelName,

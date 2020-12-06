@@ -6,7 +6,6 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
-import { LocationType } from './LocationType';
 
 export interface LocationAttributes {
   id: number;
@@ -24,25 +23,6 @@ export interface LocationCreationAttributes
     'id' | 'coord' | 'notes' | 'imageUrl' | 'description'
   > {}
 
-export const attributes: ModelAttributes<Location> = {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  locationTypeId: {
-    type: DataTypes.INTEGER,
-    field: 'location_type_id',
-    allowNull: false
-  },
-  name: { type: DataTypes.STRING, allowNull: false },
-  coord: { type: DataTypes.STRING },
-  notes: { type: DataTypes.STRING },
-  imageUrl: { type: DataTypes.STRING, field: 'image_url' },
-  description: { type: DataTypes.STRING(500) }
-};
-
 export class Location
   extends Model<LocationAttributes, LocationCreationAttributes>
   implements LocationAttributes {
@@ -57,7 +37,26 @@ export class Location
   imageUrl!: string;
   description!: string;
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+  static initModel(sequelize: Sequelize) {
+    const attributes: ModelAttributes<Location> = {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      locationTypeId: {
+        type: DataTypes.INTEGER,
+        field: 'location_type_id',
+        allowNull: false
+      },
+      name: { type: DataTypes.STRING, allowNull: false },
+      coord: { type: DataTypes.STRING },
+      notes: { type: DataTypes.STRING },
+      imageUrl: { type: DataTypes.STRING, field: 'image_url' },
+      description: { type: DataTypes.STRING(500) }
+    };
+
     Location.init(attributes, {
       sequelize,
       modelName: Location.modelName,

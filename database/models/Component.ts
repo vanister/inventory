@@ -24,30 +24,6 @@ export interface ComponentCreationAttributes
     'id' | 'cost' | 'location' | 'imageUrl' | 'description'
   > {}
 
-export const attributes: ModelAttributes<Component> = {
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  buildingId: {
-    type: DataTypes.INTEGER,
-    field: 'building_id',
-    allowNull: false
-  },
-  componentTypeId: {
-    type: DataTypes.INTEGER,
-    field: 'component_type_id',
-    allowNull: false
-  },
-  name: { type: DataTypes.STRING, allowNull: false },
-  cost: { type: DataTypes.DECIMAL },
-  location: { type: DataTypes.STRING },
-  imageUrl: { type: DataTypes.STRING, field: 'image_url' },
-  description: { type: DataTypes.STRING(500) }
-};
-
 export class Component
   extends Model<ComponentAttributes, ComponentCreationAttributes>
   implements ComponentAttributes {
@@ -63,7 +39,31 @@ export class Component
   imageUrl!: string;
   description!: string;
 
-  static initialize(sequelize: Sequelize, attributes: ModelAttributes) {
+  static initModel(sequelize: Sequelize) {
+    const attributes: ModelAttributes<Component> = {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      buildingId: {
+        type: DataTypes.INTEGER,
+        field: 'building_id',
+        allowNull: false
+      },
+      componentTypeId: {
+        type: DataTypes.INTEGER,
+        field: 'component_type_id',
+        allowNull: false
+      },
+      name: { type: DataTypes.STRING, allowNull: false },
+      cost: { type: DataTypes.DECIMAL },
+      location: { type: DataTypes.STRING },
+      imageUrl: { type: DataTypes.STRING, field: 'image_url' },
+      description: { type: DataTypes.STRING(500) }
+    };
+
     Component.init(attributes, {
       sequelize,
       modelName: Component.modelName,
