@@ -28,8 +28,8 @@ export const attributes: ModelAttributes<UserLocations> = {
 export class UserLocations
   extends Model<UserLocationsAtributes>
   implements UserLocationsAtributes {
-  static modelName = 'userLocations';
-  static tableName = 'user_locations';
+  static readonly modelName = 'userLocations';
+  static readonly tableName = 'user_locations';
 
   id!: number;
   userProfileId!: number;

@@ -51,8 +51,8 @@ export const attributes: ModelAttributes<Building> = {
 export class Building
   extends Model<BuildingAttributes, BuildingCreationAttributes>
   implements BuildingAttributes {
-  static modelName = 'building';
-  static tableName = 'building';
+  static readonly modelName = 'building';
+  static readonly tableName = 'building';
 
   id!: number;
   locationId!: number;

@@ -41,8 +41,8 @@ export const attributes: ModelAttributes<UserProfile> = {
 export class UserProfile
   extends Model<UserProfileAttributes, UserProfileCreationAttributes>
   implements UserProfileAttributes {
-  static modelName = 'userProfile';
-  static tableName = 'user_profile';
+  static readonly modelName = 'userProfile';
+  static readonly tableName = 'user_profile';
 
   id!: number;
   firstName!: string;

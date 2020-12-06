@@ -51,8 +51,8 @@ export const attributes: ModelAttributes<Component> = {
 export class Component
   extends Model<ComponentAttributes, ComponentCreationAttributes>
   implements ComponentAttributes {
-  static modelName = 'component';
-  static tableName = 'component';
+  static readonly modelName = 'component';
+  static readonly tableName = 'component';
 
   id!: number;
   buildingId!: number;

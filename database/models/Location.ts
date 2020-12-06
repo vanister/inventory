@@ -46,8 +46,8 @@ export const attributes: ModelAttributes<Location> = {
 export class Location
   extends Model<LocationAttributes, LocationCreationAttributes>
   implements LocationAttributes {
-  static modelName = 'location';
-  static tableName = 'location';
+  static readonly modelName = 'location';
+  static readonly tableName = 'location';
 
   id!: number;
   locationTypeId!: number;

@@ -13,8 +13,8 @@ export interface BuildingTypeCreationAttributes
 export class BuildingType
   extends TypeBase<BuildingTypeAtributes, BuildingTypeCreationAttributes>
   implements BuildingTypeAtributes {
-  static modelName = 'buildingType';
-  static tableName = 'building_type';
+  static readonly modelName = 'buildingType';
+  static readonly tableName = 'building_type';
 
   static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     BuildingType.init(attributes, {

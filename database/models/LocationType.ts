@@ -13,8 +13,8 @@ export interface LocationTypeCreationAttributes
 export class LocationType
   extends TypeBase<LocationTypeAtributes, LocationTypeCreationAttributes>
   implements LocationTypeAtributes {
-  static modelName = 'locationType';
-  static tableName = 'location_type';
+  static readonly modelName = 'locationType';
+  static readonly tableName = 'location_type';
 
   static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     LocationType.init(attributes, {

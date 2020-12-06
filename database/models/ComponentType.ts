@@ -13,8 +13,8 @@ export interface ComponentTypeCreationAttributes
 export class ComponentType
   extends TypeBase<ComponentTypeAtributes, ComponentTypeCreationAttributes>
   implements ComponentTypeAtributes {
-  static modelName = 'componentType';
-  static tableName = 'component_type';
+  static readonly modelName = 'componentType';
+  static readonly tableName = 'component_type';
 
   static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     ComponentType.init(attributes, {
