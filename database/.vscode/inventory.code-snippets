@@ -7,6 +7,7 @@
       "import { DataTypes, QueryInterface, Sequelize } from 'sequelize';",
       "",
       "// NOTE: remember to change this file to a `.ts` file if it's `.js`!!!",
+      "// NOTE: migrations are point-in-time snapshots of the database.",
       "",
       "export async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {",
       "  // add altering commands here.",
