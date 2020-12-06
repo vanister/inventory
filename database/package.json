@@ -19,7 +19,7 @@
     "sql": "npx sequelize",
     "sql:create-db": "npm run sql -- db:create",
     "sql:drop-db": "npm run sql -- db:drop",
-    "sql:migrate": "npm run build && npm run sql -- db:migrate --env local",
+    "sql:migrate": "npm run clean && npm run build && npm run sql -- db:migrate --env local",
     "sql:migration-gen": "npm run sql -- migration:generate --migrations-path='./migrations' --underscored --name",
     "sql:restore": "npm run sql:drop-db && npm run sql:create-db && npm run clean && npm run sql:migrate",
     "sql:seed": "npm run sql -- db:seed",
