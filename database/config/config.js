@@ -1,8 +1,18 @@
 require('dotenv/config');
 
+const path = require('path');
 const { env } = process;
 
 const config = {
+  local: {
+    storage: path.resolve(
+      __dirname,
+      '..',
+      'localdata',
+      'social_inventory_local.db'
+    ),
+    dialect: 'sqlite'
+  },
   development: {
     username: env.INV_DB_DEV_UN || 'postgres',
     password: env.INV_DB_DEV_PW || 'postgres123',
