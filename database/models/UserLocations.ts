@@ -1,4 +1,10 @@
-import { DataTypes, Model, ModelAttributes, Sequelize } from 'sequelize';
+import {
+  DataTypes,
+  Model,
+  ModelAttributes,
+  Optional,
+  Sequelize
+} from 'sequelize';
 import { Location } from './Location';
 import { UserProfile } from './UserProfile';
 
@@ -8,8 +14,11 @@ export interface UserLocationsAtributes {
   locationId: number;
 }
 
+export interface UserLocationsCreationAttributes
+  extends Optional<UserLocationsAtributes, 'id'> {}
+
 export class UserLocations
-  extends Model<UserLocationsAtributes>
+  extends Model<UserLocationsAtributes, UserLocationsCreationAttributes>
   implements UserLocationsAtributes {
   static readonly modelName = 'userLocations';
   static readonly tableName = 'user_locations';
