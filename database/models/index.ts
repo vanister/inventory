@@ -18,8 +18,10 @@ export function initialize(sequelize: Sequelize) {
   ComponentType.initModel(sequelize, typeAttributesBase);
   Location.initModel(sequelize);
   LocationType.initModel(sequelize, typeAttributesBase);
-  UserLocations.initModel(sequelize);
   UserProfile.initModel(sequelize);
+  // order matters, this references Location and UserProfile
+  // which needed to be init first
+  UserLocations.initModel(sequelize);
 
   // set associations
   Building.setAssociations({ BuildingType });

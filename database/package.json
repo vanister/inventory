@@ -15,16 +15,17 @@
   "scripts": {
     "build": "npx tsc",
     "clean": "rimraf ./build",
+    "clean:all": "rimraf ./build ./localdata",
     "test": "jest",
     "sql": "npx sequelize",
     "sql:create-db": "npm run sql -- db:create",
     "sql:drop-db": "npm run sql -- db:drop",
     "sql:migrate": "npm run clean && npm run build && npm run sql -- db:migrate --env local",
     "sql:migration-gen": "npm run sql -- migration:generate --migrations-path='./migrations' --underscored --name",
-    "sql:restore": "npm run sql:drop-db && npm run sql:create-db && npm run clean && npm run sql:migrate",
+    "sql:model-gen": "npm run sql -- model:generate",
+    "sql:restore": "npm run sql:drop-db && npm run sql:create-db && npm run clean:all && npm run sql:migrate",
     "sql:seed": "npm run sql -- db:seed",
-    "sql:seed-gen": "npm run sql -- seed:generate",
-    "sql:model-gen": "npm run sql -- model:generate"
+    "sql:seed-gen": "npm run sql -- seed:generate"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -35,12 +36,10 @@
   "devDependencies": {
     "@types/node": "^14.11.8",
     "@types/validator": "^13.1.0",
-    "@types/yargs": "^15.0.9",
     "rimraf": "^3.0.2",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.3",
-    "yargs": "^16.1.0"
+    "typescript": "^4.0.3"
   }
 }
