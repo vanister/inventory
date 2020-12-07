@@ -1,4 +1,5 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
+import { Location } from './Location';
 import {
   TypeBase,
   TypeBaseAtributes,
@@ -15,6 +16,8 @@ export class LocationType
   implements LocationTypeAtributes {
   static readonly modelName = 'locationType';
   static readonly tableName = 'location_type';
+
+  locations?: Location[];
 
   static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     LocationType.init(attributes, {

@@ -27,6 +27,9 @@ export class UserLocations
   userProfileId!: number;
   locationId!: number;
 
+  locations?: Location[];
+  userProfiles?: UserProfile[];
+
   static initModel(sequelize: Sequelize) {
     const attributes: ModelAttributes<UserLocations> = {
       id: {

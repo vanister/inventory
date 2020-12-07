@@ -1,4 +1,5 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
+import { Component } from './Component';
 import {
   TypeBase,
   TypeBaseAtributes,
@@ -15,6 +16,8 @@ export class ComponentType
   implements ComponentTypeAtributes {
   static readonly modelName = 'componentType';
   static readonly tableName = 'component_type';
+
+  components?: Component[];
 
   static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     ComponentType.init(attributes, {

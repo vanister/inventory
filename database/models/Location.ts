@@ -6,6 +6,8 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
+import { LocationType } from './LocationType';
+import { UserProfile } from './UserProfile';
 
 export interface LocationAttributes {
   id: number;
@@ -36,6 +38,9 @@ export class Location
   notes!: string;
   imageUrl!: string;
   description!: string;
+
+  locationType?: LocationType;
+  userProfiles?: UserProfile[];
 
   static initModel(sequelize: Sequelize) {
     const attributes: ModelAttributes<Location> = {

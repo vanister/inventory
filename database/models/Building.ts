@@ -6,6 +6,7 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
+import { BuildingType } from './BuildingType';
 
 export interface BuildingAttributes {
   id: number;
@@ -38,6 +39,8 @@ export class Building
   coord!: any;
   imageUrl!: string;
   description!: string;
+
+  buildingType?: BuildingType;
 
   static initModel(sequelize: Sequelize) {
     const attributes: ModelAttributes<Building> = {

@@ -10,6 +10,10 @@ import { LocationType } from './LocationType';
 import { UserLocations } from './UserLocations';
 import { UserProfile } from './UserProfile';
 
+/**
+ * Initalizes all of the table models with the given context.
+ * @param sequelize The sequelize db context.
+ */
 export function initialize(sequelize: Sequelize) {
   // initalize the models
   Building.initModel(sequelize);

@@ -1,5 +1,4 @@
 import {
-  Association,
   DataTypes,
   Model,
   ModelAttributes,
@@ -7,7 +6,6 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
-import { UserLocations } from './UserLocations';
 
 export interface UserProfileAttributes {
   id: number;
@@ -36,6 +34,8 @@ export class UserProfile
   email!: string;
   externalId!: string;
   phoneNumber!: string;
+
+  locations?: Location[];
 
   static initModel(sequelize: Sequelize) {
     const attributes: ModelAttributes<UserProfile> = {

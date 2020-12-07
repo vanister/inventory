@@ -1,4 +1,5 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
+import { Building } from './Building';
 import {
   TypeBase,
   TypeBaseAtributes,
@@ -15,6 +16,8 @@ export class BuildingType
   implements BuildingTypeAtributes {
   static readonly modelName = 'buildingType';
   static readonly tableName = 'building_type';
+
+  buildings?: Building[];
 
   static initModel(sequelize: Sequelize, attributes: ModelAttributes) {
     BuildingType.init(attributes, {

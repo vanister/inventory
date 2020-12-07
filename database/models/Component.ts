@@ -6,6 +6,7 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
+import { ComponentType } from './ComponentType';
 
 export interface ComponentAttributes {
   id: number;
@@ -38,6 +39,8 @@ export class Component
   location!: string;
   imageUrl!: string;
   description!: string;
+
+  componentType?: ComponentType;
 
   static initModel(sequelize: Sequelize) {
     const attributes: ModelAttributes<Component> = {
