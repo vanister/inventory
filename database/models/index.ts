@@ -26,8 +26,9 @@ export function initialize(sequelize: Sequelize) {
   BuildingType.setAssociations({ Building });
   Component.setAssociations({ ComponentType });
   ComponentType.setAssociations({ Component });
-  Location.setAssociations({ LocationType });
+  Location.setAssociations({ LocationType, UserLocations, UserProfile });
   LocationType.setAssociations({ Location });
+  UserProfile.setAssociations({ Location, UserLocations });
 }
 
 export {

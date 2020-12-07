@@ -77,5 +77,7 @@ export class UserProfile
     UserLocations
   }: {
     [name: string]: ModelStatic<Model>;
-  }) {}
+  }) {
+    UserProfile.belongsToMany(Location, { through: UserLocations as any });
+  }
 }

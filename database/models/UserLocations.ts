@@ -1,4 +1,6 @@
 import { DataTypes, Model, ModelAttributes, Sequelize } from 'sequelize';
+import { Location } from './Location';
+import { UserProfile } from './UserProfile';
 
 export interface UserLocationsAtributes {
   id: number;
@@ -27,12 +29,24 @@ export class UserLocations
       userProfileId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'user_profile_id'
+        field: 'user_profile_id',
+        references: {
+          // UserProfile is a Sequelize.Model, but the typings for
+          // references.model doesn't correctly validate it :shrug:
+          model: UserProfile as any,
+          key: 'id'
+        }
       },
       locationId: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        field: 'location_id'
+        field: 'location_id',
+        // Location is a Sequelize.Model, but the typings for
+        // references.model doesn't correctly validate it :shrug:
+        references: {
+          model: Location as any,
+          key: 'id'
+        }
       }
     };
 

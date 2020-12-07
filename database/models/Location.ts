@@ -66,10 +66,13 @@ export class Location
   }
 
   static setAssociations({
-    LocationType
+    LocationType,
+    UserLocations,
+    UserProfile
   }: {
-    LocationType: ModelStatic<Model>;
+    [name: string]: ModelStatic<Model>;
   }) {
     Location.belongsTo(LocationType, { foreignKey: 'location_type_id' });
+    Location.belongsToMany(UserProfile, { through: UserLocations as any });
   }
 }
