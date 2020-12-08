@@ -2,11 +2,12 @@
   "compilerOptions": {
     "outDir": "./dist",
     "target": "ES2020",
-    "module": "UMD",
+    "module": "ES2020",
     "typeRoots": ["node_modules/@types"],
     "moduleResolution": "node",
     "sourceMap": true,
     "esModuleInterop": true
   },
-  "exclude": ["playground.ts"]
+  "exclude": ["playground.ts"],
+  "include": ["./src"]
 }
