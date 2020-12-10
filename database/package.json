@@ -6,18 +6,26 @@
   "author": "vanister",
   "license": "MIT",
   "directories": {
-    "doc": "docs"
+    "doc": "The documentation for the project.",
+    "dist": "The built code."
   },
+  "keywords": [
+    "postgres",
+    "typescript",
+    "sequelize"
+  ],
+  "type": "module",
+  "dist": {},
   "engines": {
     "node": ">=14.15.0",
     "npm": ">=6.14.0"
   },
   "scripts": {
     "build": "npx tsc",
-    "build:lib": "rimraf ./lib && npx tsc --build tsconfig.lib.json",
-    "clean": "rimraf ./build",
-    "clean:all": "rimraf ./build ./localdata",
-    "test": "jest",
+    "build:dist": "npm run clean && npx tsc -p tsconfig.lib.json",
+    "clean": "npx rimraf ./dist",
+    "clean:all": "npx rimraf ./dist ./localdata",
+    "test": "npx jest",
     "sql": "npx sequelize",
     "sql:create-db": "npm run sql -- db:create",
     "sql:drop-db": "npm run sql -- db:drop",
