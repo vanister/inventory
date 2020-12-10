@@ -3,6 +3,7 @@
   "compilerOptions": {
     "declaration": true,
     "module": "ESNext",
+    "outDir": "./dist/esm",
     "target": "ES6"
   },
   "exclude": [
