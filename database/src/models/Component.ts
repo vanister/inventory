@@ -6,7 +6,7 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
-import { ComponentType } from './ComponentType';
+import { ComponentType } from './ComponentType.js';
 
 export interface ComponentAttributes {
   id: number;

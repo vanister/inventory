@@ -1,14 +1,14 @@
 import { Sequelize } from 'sequelize';
 
-import { typeAttributesBase } from './TypeBase';
-import { Building } from './Building';
-import { BuildingType } from './BuildingType';
-import { Component } from './Component';
-import { ComponentType } from './ComponentType';
-import { Location } from './Location';
-import { LocationType } from './LocationType';
-import { UserLocations } from './UserLocations';
-import { UserProfile } from './UserProfile';
+import { typeAttributesBase } from './TypeBase.js';
+import { Building } from './Building.js';
+import { BuildingType } from './BuildingType.js';
+import { Component } from './Component.js';
+import { ComponentType } from './ComponentType.js';
+import { Location } from './Location.js';
+import { LocationType } from './LocationType.js';
+import { UserLocations } from './UserLocations.js';
+import { UserProfile } from './UserProfile.js';
 
 /**
  * Initalizes all of the table models with the given context.

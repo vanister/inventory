@@ -1,5 +1,5 @@
 import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
-import { UserProfile } from '../models';
+import { UserProfile } from '../models/index.js';
 
 export async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {
   queryInterface.createTable(UserProfile.tableName, {

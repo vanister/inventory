@@ -6,7 +6,7 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
-import { BuildingType } from './BuildingType';
+import { BuildingType } from './BuildingType.js';
 
 export interface BuildingAttributes {
   id: number;

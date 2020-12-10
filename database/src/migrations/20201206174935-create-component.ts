@@ -1,5 +1,5 @@
 import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
-import { Building, Component, ComponentType } from '../models';
+import { Building, Component, ComponentType } from '../models/index.js';
 
 export async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {
   queryInterface.createTable(Component.tableName, {

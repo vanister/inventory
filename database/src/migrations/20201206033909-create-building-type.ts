@@ -1,5 +1,5 @@
 import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
-import { BuildingType } from '../models';
+import { BuildingType } from '../models/index.js';
 
 // Migrations are independent of models
 

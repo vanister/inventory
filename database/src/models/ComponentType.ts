@@ -1,10 +1,10 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
-import { Component } from './Component';
+import { Component } from './Component.js';
 import {
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
-} from './TypeBase';
+} from './TypeBase.js';
 
 export interface ComponentTypeAtributes extends TypeBaseAtributes {}
 

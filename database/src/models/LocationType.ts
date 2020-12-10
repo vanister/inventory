@@ -1,10 +1,10 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
-import { Location } from './Location';
+import { Location } from './Location.js';
 import {
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
-} from './TypeBase';
+} from './TypeBase.js';
 
 export interface LocationTypeAtributes extends TypeBaseAtributes {}
 

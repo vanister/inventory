@@ -5,8 +5,8 @@ import {
   Optional,
   Sequelize
 } from 'sequelize';
-import { Location } from './Location';
-import { UserProfile } from './UserProfile';
+import { Location } from './Location.js';
+import { UserProfile } from './UserProfile.js';
 
 export interface UserLocationsAtributes {
   id: number;

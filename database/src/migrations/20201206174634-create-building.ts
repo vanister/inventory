@@ -1,5 +1,5 @@
 import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
-import { Building, BuildingType, Location } from '../models';
+import { Building, BuildingType, Location } from '../models/index.js';
 
 export async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {
   queryInterface.createTable(Building.tableName, {

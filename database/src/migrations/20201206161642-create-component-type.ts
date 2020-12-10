@@ -1,5 +1,5 @@
 import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
-import { ComponentType } from '../models';
+import { ComponentType } from '../models/index.js';
 
 // Migrations are independent of models
 

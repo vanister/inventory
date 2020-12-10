@@ -1,5 +1,5 @@
 import { DataTypes, QueryInterface, Sequelize } from 'sequelize';
-import { Location, LocationType } from '../models';
+import { Location, LocationType } from '../models/index.js';
 
 export async function up(queryInterface: QueryInterface, Sequelize: Sequelize) {
   queryInterface.createTable(Location.tableName, {

@@ -1,10 +1,10 @@
 import { Model, ModelAttributes, ModelStatic, Sequelize } from 'sequelize';
-import { Building } from './Building';
+import { Building } from './Building.js';
 import {
   TypeBase,
   TypeBaseAtributes,
   TypeBaseCreationAttributes
-} from './TypeBase';
+} from './TypeBase.js';
 
 export interface BuildingTypeAtributes extends TypeBaseAtributes {}
 
