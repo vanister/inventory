@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "build:dist": "npm run clean && npx tsc -p tsconfig.lib.json",
+    "build:esm": "npm run clean && npx tsc -p tsconfig.esm.json",
     "clean": "npx rimraf ./dist",
     "clean:all": "npx rimraf ./dist ./localdata",
     "test": "npx jest",
