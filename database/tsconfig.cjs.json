@@ -2,8 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "module": "ESNext",
-    "outDir": "./dist/esm",
+    "module": "CommonJS",
+    "outDir": "./dist/cjs",
     "target": "ES2020"
   },
   "exclude": ["./src/seeders/**/*", "./src/migrations/**/*"]

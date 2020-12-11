@@ -1,9 +1,13 @@
+// This is the base CommonJS configuration
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types"],
+    "esModuleInterop": true,
+    "module": "ESNext",
     "moduleResolution": "node",
+    "outDir": "./dist/esm",
     "sourceMap": true,
-    "esModuleInterop": true
+    "target": "ES2020",
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["./src"]
 }

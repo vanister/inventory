@@ -15,16 +15,19 @@
     "sequelize"
   ],
   "type": "module",
-  "dist": {},
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
   "engines": {
     "node": ">=14.15.0",
     "npm": ">=6.14.0"
   },
   "scripts": {
-    "build": "npx tsc",
-    "build:esm": "npm run clean && npx tsc -p tsconfig.esm.json",
+    "build": "npx tsc -p tsconfig.dev.json",
+    "build:cjs": "npx tsc -p tsconfig.cjs.json",
+    "build:esm": "npx tsc -p tsconfig.esm.json",
+    "build:full": "npm run clean && npm run build:cjs && npm run build:esm && npm run copy-packageinfo",
     "clean": "npx rimraf ./dist",
-    "clean:all": "npx rimraf ./dist ./localdata",
+    "copy-packageinfo": "node --experimental-json-modules copy-packageinfo.js",
     "test": "npx jest",
     "sql": "npx sequelize",
     "sql:create-db": "npm run sql -- db:create",
