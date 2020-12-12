@@ -22,7 +22,7 @@
     "npm": ">=6.14.0"
   },
   "scripts": {
-    "build": "npx tsc -p tsconfig.dev.json",
+    "build": "npx tsc -p tsconfig.json && npm run copy-packageinfo",
     "build:cjs": "npx tsc -p tsconfig.cjs.json",
     "build:esm": "npx tsc -p tsconfig.esm.json",
     "build:full": "npm run clean && npm run build:cjs && npm run build:esm && npm run copy-packageinfo",
