@@ -15,8 +15,8 @@ node_modules/
 
 # project specific
 playground.ts
+*.tgz
 
 build/
 dist/
 lib/
-
