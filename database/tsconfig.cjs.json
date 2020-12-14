@@ -4,7 +4,7 @@
     "declaration": true,
     "module": "CommonJS",
     "outDir": "./dist/cjs",
-    "target": "ES2020"
+    "target": "ES2018"
   },
   "exclude": ["./src/seeders/**/*", "./src/migrations/**/*"]
 }
