@@ -1,3 +1,7 @@
+# files
+*.env
+
+# directories
 build/
 dist/
 coverage/
