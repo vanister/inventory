@@ -7,8 +7,8 @@ const config = {
   local: {
     storage: path.resolve(
       __dirname,
-      '..',
-      'localdata',
+      '../..',
+      'localdb',
       'social_inventory_local.db'
     ),
     dialect: 'sqlite'

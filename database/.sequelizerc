@@ -1,9 +1,10 @@
 const path = require('path');
+const baseDistPath = path.resolve('dist', 'cjs');
 
 module.exports = {
   env: 'development',
   config: path.resolve('config', 'config.js'),
-  'models-path': path.resolve('dist', 'models'),
-  'seeders-path': path.resolve('dist', 'seeders'),
-  'migrations-path': path.resolve('dist', 'migrations')
+  'models-path': path.resolve(baseDistPath, 'models'),
+  'seeders-path': path.resolve(baseDistPath, 'seeders'),
+  'migrations-path': path.resolve(baseDistPath, 'migrations')
 };

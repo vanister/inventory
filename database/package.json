@@ -14,7 +14,6 @@
     "typescript",
     "sequelize"
   ],
-  "type": "module",
   "main": "./cjs/index.js",
   "exports": {
     ".": "./cjs/index.js",
