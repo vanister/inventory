@@ -6,7 +6,8 @@ build/
 coverage/
 dist/
 localdata/
-node_modules
+localdb/
+node_modules/
 
 # package directories
 jspm_packages
