@@ -71,7 +71,7 @@ describe('PostgresContext', () => {
       const data = await context.run(sql, ...params);
 
       expect(data).toBeUndefined();
-      expect(mockPoolMembers.query).toHaveBeenCalledWith(sql, params);
+      expect(pool.query).toHaveBeenCalledWith(sql, params);
     });
   });
 });
