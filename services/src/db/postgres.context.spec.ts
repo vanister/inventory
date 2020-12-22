@@ -60,4 +60,18 @@ describe('PostgresContext', () => {
       expect(pool.query).toHaveBeenCalledWith(sql, []);
     });
   });
+
+  describe('WHEN running a query', () => {
+    test('should execute without returning any data', async () => {
+      const sql = `insert into table(name, value) values($1, $2)`;
+      const params = ['test', 42];
+
+      mockPoolMembers.query.mockResolvedValueOnce(undefined);
+
+      const data = await context.run(sql, ...params);
+
+      expect(data).toBeUndefined();
+      expect(mockPoolMembers.query).toHaveBeenCalledWith(sql, params);
+    });
+  });
 });

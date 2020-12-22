@@ -27,6 +27,6 @@ export class PostgresContext implements DbContext {
   }
 
   public async run(sql: string, ...params: any[]): Promise<void> {
-    throw new Error('Method not implemented.');
+    await this.db.query(sql, params);
   }
 }
