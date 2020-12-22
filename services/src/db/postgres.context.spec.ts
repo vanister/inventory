@@ -39,7 +39,7 @@ describe('PostgresContext', () => {
     });
   });
 
-  describe('WHEN querying', () => {
+  describe('WHEN querying for data', () => {
     test('should return a collection of rows', async () => {
       const sql = 'select * from table';
       const data = {
