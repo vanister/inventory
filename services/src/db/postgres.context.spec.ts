@@ -1,12 +1,15 @@
+import { Pool } from 'pg';
 import { PostgresContext } from './postgres.context';
 
 type TestRecord = { name: string; value: number };
 
 describe('PostgresContext', () => {
-  const mockDb = {
+  const mockPoolMembers = {
     end: jest.fn().mockResolvedValue(undefined),
     query: jest.fn().mockResolvedValue([])
   };
+
+  const pool: Partial<Pool> = mockPoolMembers;
 
   let context: PostgresContext;
 
@@ -16,7 +19,7 @@ describe('PostgresContext', () => {
   });
 
   beforeEach(() => {
-    context = new PostgresContext(mockDb as any);
+    context = new PostgresContext(pool as Pool);
   });
 
   test('should create a new instance', () => {
@@ -27,7 +30,7 @@ describe('PostgresContext', () => {
     test('should end the pg pool', async () => {
       await context.close();
 
-      expect(mockDb.end).toHaveBeenCalled();
+      expect(pool.end).toHaveBeenCalled();
     });
 
     test('should not call "end" if connection is already closed', async () => {
@@ -35,7 +38,7 @@ describe('PostgresContext', () => {
 
       await context.close();
 
-      expect(mockDb.end).not.toHaveBeenCalled();
+      expect(pool.end).not.toHaveBeenCalled();
     });
   });
 
@@ -49,12 +52,12 @@ describe('PostgresContext', () => {
         ]
       };
 
-      mockDb.query.mockResolvedValueOnce(data);
+      mockPoolMembers.query.mockResolvedValueOnce(data);
 
       const rows = await context.query<TestRecord>(sql);
 
       expect(rows).toEqual(data.rows);
-      expect(mockDb.query).toHaveBeenCalledWith(sql, []);
+      expect(pool.query).toHaveBeenCalledWith(sql, []);
     });
   });
 });
