@@ -1,8 +1,14 @@
+# handler paths are based off of the parent serverless.yml file location
+
 list:
-  handler: src/handlers/user-profile/list.handler
+  handler: build/handlers/user-profile/list.handler
   events:
     - http: get /user-profiles
 
+get:
+  handler: build/handlers/user-profile/get.handler
+  events:
+    - http: get /user-profile/{id}
 # function-name:
 #   handler: path/to/hander/rel/to/root/serverless.yml
 #   events:
