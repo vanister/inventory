@@ -3,7 +3,10 @@
 list:
   handler: build/handlers/user-profile/list.handler
   events:
-    - http: get /user-profiles
+    - http:
+        method: get
+        path: /user-profiles
+        integration: lambda
 
 get:
   handler: build/handlers/user-profile/get.handler
