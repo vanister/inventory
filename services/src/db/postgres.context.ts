@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-import { DbContext } from './db.context';
+import { DbContext } from './context';
 
 export class PostgresContext implements DbContext {
   private _connectionClosed: boolean = false;
