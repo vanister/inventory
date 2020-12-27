@@ -11,6 +11,8 @@
 #
 # Happy Coding!
 
+# https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/#serverlessyml-reference/
+
 service: inventory-services
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
@@ -19,6 +21,7 @@ service: inventory-services
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 frameworkVersion: '2'
+useDotEnv: true
 
 provider:
   name: aws
@@ -110,6 +113,7 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
 
 plugins:
   - serverless-offline

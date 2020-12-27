@@ -11,8 +11,7 @@
     "build:full": "npm run clean && npm run build",
     "build:watch": "npm run build -- --watch",
     "clean": "rimraf ./build",
-    "debug": "npm run build && sls offline",
-    "start": "npm run build && sls offline",
+    "start": "sls offline",
     "test": "jest",
     "test:watch": "jest --watch"
   },
