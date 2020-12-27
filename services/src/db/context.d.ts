@@ -3,7 +3,7 @@
  */
 export interface DbContext {
   /** True, if the underlying connection is closed. False, otherwise. */
-  connectionClosed: boolean;
+  readonly connectionClosed: boolean;
 
   /** Close the db connection. */
   close(): Promise<void>;

@@ -1,16 +1,8 @@
-import { Pool } from 'pg';
+import { data, TestData } from '../mocks';
+import { mockPool, members } from '../mocks/pg';
 import { PostgresContext } from './postgres.context';
 
-type TestRecord = { name: string; value: number };
-
 describe('PostgresContext', () => {
-  const mockPoolMembers = {
-    end: jest.fn().mockResolvedValue(undefined),
-    query: jest.fn().mockResolvedValue([])
-  };
-
-  const pool: Partial<Pool> = mockPoolMembers;
-
   let context: PostgresContext;
 
   beforeEach(() => {
@@ -19,7 +11,7 @@ describe('PostgresContext', () => {
   });
 
   beforeEach(() => {
-    context = new PostgresContext(pool as Pool);
+    context = new PostgresContext(mockPool);
   });
 
   test('should create a new instance', () => {
@@ -30,7 +22,7 @@ describe('PostgresContext', () => {
     test('should end the pg pool', async () => {
       await context.close();
 
-      expect(pool.end).toHaveBeenCalled();
+      expect(mockPool.end).toHaveBeenCalled();
     });
 
     test('should not call "end" if connection is already closed', async () => {
@@ -38,40 +30,32 @@ describe('PostgresContext', () => {
 
       await context.close();
 
-      expect(pool.end).not.toHaveBeenCalled();
+      expect(mockPool.end).not.toHaveBeenCalled();
     });
   });
 
   describe('WHEN querying for data', () => {
     test('should return a collection of rows', async () => {
+      members.query.mockResolvedValueOnce({ rows: [...data] });
+
       const sql = 'select * from table';
-      const data = {
-        rows: [
-          { name: 'test-42', value: 42 },
-          { name: 'test-142', value: 142 }
-        ]
-      };
+      const rows = await context.query<TestData>(sql);
 
-      mockPoolMembers.query.mockResolvedValueOnce(data);
-
-      const rows = await context.query<TestRecord>(sql);
-
-      expect(rows).toEqual(data.rows);
-      expect(pool.query).toHaveBeenCalledWith(sql, []);
+      expect(rows).toEqual(data);
+      expect(mockPool.query).toHaveBeenCalledWith(sql, []);
     });
   });
 
   describe('WHEN running a query', () => {
     test('should execute without returning any data', async () => {
+      members.query.mockResolvedValueOnce(undefined);
+
       const sql = `insert into table(name, value) values($1, $2)`;
       const params = ['test', 42];
-
-      mockPoolMembers.query.mockResolvedValueOnce(undefined);
-
       const data = await context.run(sql, ...params);
 
       expect(data).toBeUndefined();
-      expect(pool.query).toHaveBeenCalledWith(sql, params);
+      expect(mockPool.query).toHaveBeenCalledWith(sql, params);
     });
   });
 });
