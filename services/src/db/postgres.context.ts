@@ -2,13 +2,13 @@ import { Pool } from 'pg';
 import { DbContext } from './context';
 
 export class PostgresContext implements DbContext {
-  private _connectionClosed: boolean = false;
-
-  public get connectionClosed() {
-    return this._connectionClosed;
-  }
+  private _connectionClosed = false;
 
   constructor(private db: Pool) {}
+
+  public get connectionClosed(): boolean {
+    return this._connectionClosed;
+  }
 
   public async close(): Promise<void> {
     if (this.connectionClosed) {
