@@ -1,4 +1,4 @@
-import { TestData, data } from '..';
+import { data } from '..';
 import { DbContext } from '../../db/context';
 
 const members: Partial<DbContext> = {
