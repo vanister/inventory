@@ -26,6 +26,8 @@ useDotenv: true
 provider:
   name: aws
   runtime: nodejs12.x
+  apiGateway:
+    shouldStartNameWithService: true
 
 # you can overwrite defaults here
 #  stage: dev
@@ -61,6 +63,7 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
+  # User-Profiles
   - '${file(src/handlers/user-profile/user-profile.serverless.yml)}'
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -113,7 +116,6 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
-
 
 plugins:
   - serverless-offline
