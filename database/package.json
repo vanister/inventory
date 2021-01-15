@@ -38,7 +38,7 @@
     "gen:model": "npm run sql -- model:generate",
     "gen:seed": "npm run sql -- seed:generate",
     "migrate": "npm run clean && npm run build && npm run sql -- db:migrate --env local",
-    "restore": "npm run sql:drop-db && npm run sql:create-db && npm run clean:all && npm run migrate",
+    "restore": "npm run db:drop && npm run db:create && npm run migrate",
     "sql": "npx sequelize",
     "seed": "npm run sql -- db:seed",
     "test": "npx jest"
